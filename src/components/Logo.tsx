@@ -17,7 +17,7 @@ export default function Logo({ className = "", iconOnly = false, lightText = tru
         whileHover={{ scale: 1.05 }}
         src="https://i.ibb.co/Z6ymRPct/Mi-Foodbank-2048x1152-1-copy-3.png" 
         alt="Mi Foodbank" 
-        className="h-10 sm:h-12 w-auto object-contain" 
+        className="h-16 sm:h-24 w-auto object-contain" 
         referrerPolicy="no-referrer"
       />
     </div>
