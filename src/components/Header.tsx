@@ -49,7 +49,7 @@ export default function Header({ onNavClick, activeSection, onOpenDonate, isDark
     <header
       id="main-app-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || activeSection !== "hero"
           ? "bg-stone-900/95 text-stone-100 shadow-lg backdrop-blur-md py-3"
           : "bg-gradient-to-b from-stone-950/80 to-stone-950/0 text-stone-100 py-5"
       }`}
@@ -127,13 +127,7 @@ export default function Header({ onNavClick, activeSection, onOpenDonate, isDark
           </div>
 
           {/* Mobile Hamburguer */}
-          <div className="flex lg:hidden items-center space-x-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-stone-400 hover:text-brand-orange-500 hover:bg-stone-800 transition-colors"
-            >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
+          <div className="flex lg:hidden">
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -174,6 +168,22 @@ export default function Header({ onNavClick, activeSection, onOpenDonate, isDark
               ))}
 
               <div className="pt-4 border-t border-stone-800 flex flex-col space-y-3">
+                <button
+                  onClick={toggleTheme}
+                  className="w-full flex items-center justify-center space-x-2 py-3 border border-stone-700 hover:border-brand-orange-500 text-stone-300 rounded-lg font-semibold text-sm transition-colors cursor-pointer"
+                >
+                  {isDark ? (
+                    <>
+                      <Sun className="h-4 w-4 text-brand-orange-500" />
+                      <span>Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="h-4 w-4" />
+                      <span>Dark Mode</span>
+                    </>
+                  )}
+                </button>
                 <button
                   id="mobile-volunteer-btn"
                   onClick={() => handleItemClick("volunteer-hub")}
