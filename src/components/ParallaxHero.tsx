@@ -68,7 +68,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
             >
               <Sparkles className="h-4 w-4 text-brand-orange-500 animate-pulse" />
               <span className="text-xs font-mono uppercase tracking-widest text-brand-green-100 italic">
-                Representing 83 Michigan Counties
+                Serving Margate & Thanet
               </span>
             </motion.div>
 
@@ -90,7 +90,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-lg text-stone-300 max-w-xl leading-relaxed font-light"
             >
-              The **Food Bank Council of Michigan** acts as the crucial supply-chain bridge coordinating food distribution, cold networks, and community kitchens from Monroe to Marquette.
+              Providing low-priced food, household goods, and support to the local community in Thanet/Margate. Open to everyone (no membership or benefits required).
             </motion.p>
 
             {/* Interactive Quick Buttons */}
@@ -98,24 +98,32 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
             >
               <button
                 id="hero-cta-donate"
                 onClick={onDonateClick}
-                className="group flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-brand-orange-500 to-amber-500 hover:from-brand-orange-600 hover:to-amber-600 text-stone-950 font-extrabold rounded-xl shadow-lg hover:shadow-brand-orange-500/20 transform hover:-translate-y-0.5 transition-all cursor-pointer"
+                className="group flex flex-1 items-center justify-center space-x-3 px-6 py-4 bg-gradient-to-r from-brand-orange-500 to-amber-500 hover:from-brand-orange-600 hover:to-amber-600 text-stone-950 font-extrabold rounded-xl shadow-lg hover:shadow-brand-orange-500/20 transform hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 <Heart className="h-5 w-5 fill-stone-900 group-hover:scale-110 transition-transform" />
-                <span>Impact with a Donation</span>
-                <ArrowRight className="h-4 w-4 stroke-[3px] group-hover:translate-x-1 transition-transform" />
+                <span>Donate Cash</span>
               </button>
 
               <button
                 id="hero-cta-volunteer"
                 onClick={() => onExploreClick("volunteer-hub")}
-                className="flex items-center justify-center space-x-2 px-8 py-4 bg-stone-900/90 border border-stone-800 hover:border-brand-green-200 text-stone-200 hover:text-white rounded-xl shadow backdrop-blur transition-all cursor-pointer"
+                className="flex flex-1 items-center justify-center space-x-2 px-6 py-4 bg-stone-900/90 border border-stone-800 hover:border-brand-green-200 text-stone-200 hover:text-white rounded-xl shadow backdrop-blur transition-all cursor-pointer"
               >
-                <span>Sponsor or Volunteer</span>
+                <span>Volunteer</span>
+              </button>
+              
+              <button
+                id="hero-cta-crowdfund"
+                onClick={() => window.open('https://www.crowdfunder.co.uk', '_blank')}
+                className="flex flex-1 w-full items-center justify-center space-x-2 px-6 py-4 bg-brand-green-800/80 border border-brand-green-600 hover:bg-brand-green-700 text-white rounded-xl shadow backdrop-blur transition-all cursor-pointer"
+              >
+                <Sparkles className="h-5 w-5" />
+                <span>Crowdfunder: Shop Expansion</span>
               </button>
             </motion.div>
 
@@ -189,8 +197,8 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-brand-orange-500" />
                   <div>
-                    <span className="text-sm font-semibold text-white block">Need Food Assistance?</span>
-                    <span className="text-xs text-stone-450">Find your regional Michigan Food Bank</span>
+                    <span className="text-sm font-semibold text-white block">Need Help?</span>
+                    <span className="text-xs text-stone-450">Learn More</span>
                   </div>
                 </div>
                 <div className="bg-stone-800 p-2 rounded-lg group-hover:bg-brand-orange-500 group-hover:text-stone-950 transition-colors">

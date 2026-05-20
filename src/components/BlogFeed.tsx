@@ -99,7 +99,7 @@ export default function BlogFeed() {
               Community News & Updates
             </h2>
             <p className="text-stone-600 font-light text-sm sm:text-base leading-relaxed">
-              Read real-life testimonials, infrastructure breakthroughs, policy notes, and low-cost recipes straight from the heart of our Michigan network.
+              Read real-life testimonials, community shop stories, volunteers, and low-cost recipes straight from the heart of our Margate network.
             </p>
           </div>
 

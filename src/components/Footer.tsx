@@ -31,10 +31,10 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
         <div className="lg:col-span-5 space-y-4">
           <span className="text-[10px] font-mono tracking-widest text-brand-orange-500 uppercase block font-bold">STAY UPDATED</span>
           <h3 className="text-2xl font-display font-bold text-white tracking-tight">
-            Join the Gleaners Press & Harvest list
+            Join the MiCommunity list
           </h3>
           <p className="text-sm font-light text-stone-400 max-w-sm leading-relaxed">
-            Sowing news of local farm donations, surplus warehouse volunteers, and easy pantry stews twice a month. No spam.
+            Sowing news of local food donations, new shop items, and community support in Margate. No spam.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
           {success ? (
             <div id="newsletter-success-note" className="flex items-center space-x-2 text-brand-orange-400 text-sm font-semibold animate-scale-up">
               <CheckCircle className="h-5 w-5 text-emerald-500 animate-pulse" />
-              <span>Wonderful! You are now subscribed to the FBCM Newsletter network list.</span>
+              <span>Wonderful! You are now subscribed to the MiCommunity Newsletter network list.</span>
             </div>
           ) : (
             <form onSubmit={handleSubscribe} className="relative w-full max-w-md">
@@ -83,7 +83,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
           </div>
 
           <p className="text-xs text-stone-500 font-light leading-relaxed">
-            The Food Bank Council of Michigan coordinates resources and expands advocacy efforts to eradicate hunger across Michigan&apos;s beautiful Upper and Lower Peninsulas since 1984.
+            Providing low-priced food, household goods, and support to the local community in Thanet/Margate. Margate Independent Foodbank CIC.
           </p>
 
           <div className="text-[10px] font-mono text-stone-605">
@@ -125,13 +125,10 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
 
         {/* Regional Offices */}
         <div className="space-y-3">
-          <h4 className="text-xs font-mono text-stone-400 uppercase font-bold tracking-widest">Master Members</h4>
+          <h4 className="text-xs font-mono text-stone-400 uppercase font-bold tracking-widest">Our Shops</h4>
           <ul className="text-xs text-stone-450 space-y-2">
-            <li>Gleaners (Detroit / Wayne)</li>
-            <li>Feeding America West MI (Grand Rapids)</li>
-            <li>Greater Lansing Food Bank (Lansing)</li>
-            <li>Eastern Michigan Bank (Flint/Saginaw)</li>
-            <li>South Michigan Bank (Battle Creek)</li>
+            <li>Shop 1: 9 High Street, Margate, CT9 1DL (Mon-Sat, 10:00-15:00)</li>
+            <li>Shop 2: 92-94 Ramsgate Road, Margate, CT9 5RY (Mon-Fri, 10:00-15:00 & Sat 10:00-14:30)</li>
           </ul>
         </div>
 
@@ -160,7 +157,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           
           <div className="text-center sm:text-left">
-            <span>© {new Date().getFullYear()} Food Bank Council of Michigan. All Rights Reserved. Designed for modern impact.</span>
+            <span>© {new Date().getFullYear()} Margate Independent Foodbank CIC. All Rights Reserved. Designed for modern impact.</span>
           </div>
 
           <div className="flex space-x-4">

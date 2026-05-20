@@ -34,7 +34,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
     } else if (value <= 40) {
       return {
         title: "Weekly Family Food Lifeline",
-        impact: `Feeds ${familiesFedWeeks > 0 ? familiesFedWeeks : 1} Michigan family for a full week, including ${milkCartons} cartons of fresh milk.`,
+        impact: `Feeds ${familiesFedWeeks > 0 ? familiesFedWeeks : 1} local Margate family for a full week, including ${milkCartons} cartons of fresh milk.`,
         desc: "Covers a balanced box of vegetables, grains, canned lean meats, and whole-wheat breads.",
         iconSummary: "🥛 🥦 📦 🍎",
         progressMeals: 60,

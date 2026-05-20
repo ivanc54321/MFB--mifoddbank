@@ -155,7 +155,7 @@ export default function VolunteerHub() {
                     You are Officially Registered!
                   </h3>
                   <p className="text-sm text-stone-300 font-light">
-                    Thank you, <strong>{fullName}</strong>, for committing to feed Michigan! A confirmation ticket has been dispatched to <strong>{email}</strong> complete with gate directions, safety guidelines, and parking instructions.
+                    Thank you, <strong>{fullName}</strong>, for committing to feed our community! A confirmation ticket has been dispatched to <strong>{email}</strong> complete with directions, safety guidelines, and shift instructions.
                   </p>
                 </div>
 
@@ -171,8 +171,8 @@ export default function VolunteerHub() {
                       <span className="text-stone-200 font-bold">{activeRoleDetails.title}</span>
                     </div>
                     <div>
-                      <span className="text-stone-500 font-semibold block uppercase">COUNTY</span>
-                      <span className="text-stone-200 font-bold">{county} Region</span>
+                      <span className="text-stone-500 font-semibold block uppercase">LOCATION</span>
+                      <span className="text-stone-200 font-bold">{county}</span>
                     </div>
                     <div>
                       <span className="text-stone-500 font-semibold block uppercase">CONFIRMED DATE</span>
@@ -198,15 +198,15 @@ export default function VolunteerHub() {
                       if (printW) {
                         printW.document.write(`
                           <html><head><title>Volunteer Pass</title></head><body style="font-family:sans-serif;padding:40px;">
-                            <h1>Michigan Volunter Gate Pass</h1>
-                            <p>Thank you for partnering with the Food Bank Council of Michigan.</p>
+                            <h1>MiCommunity Volunteer Gate Pass</h1>
+                            <p>Thank you for partnering with the Margate Independent Foodbank CIC.</p>
                             <ul>
                               <li><strong>Volunteer Name:</strong> ${fullName}</li>
                               <li><strong>Assigned Activity:</strong> ${activeRoleDetails.title}</li>
-                              <li><strong>Target County:</strong> ${county} County</li>
+                              <li><strong>Location:</strong> ${county}</li>
                               <li><strong>Shift Slot:</strong> ${activeShift}</li>
                             </ul>
-                            <small>FBCM Credential Key: VC-${Math.floor(Math.random() * 99999 + 1000)}</small>
+                            <small>MiCommunity Credential Key: VC-${Math.floor(Math.random() * 99999 + 1000)}</small>
                           </body></html>
                         `);
                         printW.print();
@@ -356,20 +356,16 @@ export default function VolunteerHub() {
 
                     </div>
 
-                    {/* Target Michigan County location selector */}
+                    {/* Target location selector */}
                     <div className="space-y-1">
-                      <label className="text-xs font-mono text-stone-400 block font-semibold font-sans">Michigan Region Location</label>
+                      <label className="text-xs font-mono text-stone-400 block font-semibold font-sans">Shop Location</label>
                       <select
                         value={county}
                         onChange={(e) => setCounty(e.target.value)}
                         className="w-full bg-stone-900 p-3 rounded-xl text-xs border border-stone-800 focus:outline-none focus:border-brand-orange-500 text-white font-medium"
                       >
-                        <option value="Wayne (Detroit Area)">Wayne Division (Detroit Area)</option>
-                        <option value="Oakland (Metro Detroit)">Oakland Division (Metro Detroit)</option>
-                        <option value="Kent (Grand Rapids / West MI)">Kent Division (Grand Rapids / West MI)</option>
-                        <option value="Ingham (Lansing Area)">Ingham Division (Lansing / Mid-MI)</option>
-                        <option value="Genesee (Flint Area)">Genesee Division (Flint / Thumb Area)</option>
-                        <option value="Emmet (Harbor Springs / Northern MI)">Emmet Division (Northern MI)</option>
+                        <option value="Shop 1 (High Street)">Shop 1 (9 High Street)</option>
+                        <option value="Shop 2 (Ramsgate Road)">Shop 2 (92-94 Ramsgate Road)</option>
                       </select>
                     </div>
 

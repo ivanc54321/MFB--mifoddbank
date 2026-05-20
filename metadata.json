@@ -1,6 +1,6 @@
 {
-  "name": "Michigan Food Bank Council",
-  "description": "An interactive, modern portal for the Food Bank Council of Michigan to scale volunteer engagement, boost secure donations, map food assistance across 83 counties, and share community updates.",
+  "name": "Margate Independent Foodbank",
+  "description": "An interactive, modern portal for the Margate Independent Foodbank to scale volunteer engagement, boost secure donations, map food assistance, and share community updates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

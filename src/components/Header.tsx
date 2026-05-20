@@ -105,7 +105,7 @@ export default function Header({ onNavClick, activeSection, onOpenDonate }: Head
               onClick={() => handleItemClick("volunteer-hub")}
               className="px-4 py-2 border border-brand-green-200 rounded-lg text-sm font-semibold text-brand-green-100 hover:bg-brand-green-800 hover:border-brand-green-600 transition-all cursor-pointer"
             >
-              Be a Volunteer
+              Volunteer
             </button>
             <button
               id="header-action-donate"
@@ -113,7 +113,7 @@ export default function Header({ onNavClick, activeSection, onOpenDonate }: Head
               className="flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-brand-orange-500 to-amber-500 rounded-lg text-sm font-bold text-stone-900 hover:from-brand-orange-600 hover:to-amber-600 shadow-md transform hover:-translate-y-0.5 transition-all cursor-pointer"
             >
               <Heart className="h-4 w-4 fill-stone-900" />
-              <span>Donate Now</span>
+              <span>Donate</span>
             </button>
           </div>
 

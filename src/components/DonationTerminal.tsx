@@ -457,7 +457,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 <div className="flex justify-between items-center border-b border-stone-200 pb-3">
                   <div>
                     <span className="text-[9px] font-mono text-stone-400 uppercase tracking-wider">TAX EXEMPT RECEIPT</span>
-                    <span className="font-display font-black text-stone-900 text-sm block">Michigan Harvest Food Bank Network</span>
+                    <span className="font-display font-black text-stone-900 text-sm block">Margate Independent Foodbank CIC</span>
                   </div>
                   <Award className="h-6 w-6 text-brand-orange-500 shrink-0" />
                 </div>
@@ -481,7 +481,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   </div>
                   <div>
                     <span className="font-mono text-stone-400 uppercase font-semibold">FINANCIAL LEDGER:</span>{" "}
-                    <span className="font-mono text-brand-green-800 font-bold">501(c)(3) TAX DEDUCTIBLE KEY: FBCM-{Math.floor(Math.random() * 900000 + 100000)}</span>
+                    <span className="font-mono text-brand-green-800 font-bold">RECEIPT KEY: MICOM-{Math.floor(Math.random() * 900000 + 100000)}</span>
                   </div>
                 </div>
 
@@ -507,15 +507,15 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                     const printReceipt = window.open();
                     if (printReceipt) {
                       printReceipt.document.write(`
-                        <html><head><title>FBCM Donation Receipt</title></head><body style="font-family:sans-serif;padding:50px;">
+                        <html><head><title>MiCommunity Donation Receipt</title></head><body style="font-family:sans-serif;padding:50px;">
                           <h1 style="border-bottom:2px solid #2d5a27;padding-bottom:10px;">Tax Exempt Donation Receipt</h1>
-                          <p><strong>Food Bank Council of Michigan</strong></p>
+                          <p><strong>Margate Independent Foodbank CIC</strong></p>
                           <hr/>
                           <p><strong>Donor Name:</strong> ${donorName}</p>
                           <p><strong>Amount:</strong> $${pledgeAmt} (${frequency})</p>
                           <p><strong>Dedicatory Honor:</strong> ${isTribute ? tributeName : 'N/A'}</p>
                           <p><strong>EIN Registration:</strong> 38-xxxxxxx (Verified 501(c)(3))</p>
-                          <p><strong>Reference Code:</strong> FBCM-${Math.floor(Math.random() * 89999 + 10000)}</p>
+                          <p><strong>Reference Code:</strong> MICOM-${Math.floor(Math.random() * 89999 + 10000)}</p>
                           <p>Thank you for nourishing neighboring lives!</p>
                         </body></html>
                       `);

@@ -6,10 +6,10 @@ import { MemberFoodBank } from "../types";
 export default function MichiganMap() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
-  const [activeBankId, setActiveBankId] = useState<string>("gleaners");
+  const [activeBankId, setActiveBankId] = useState<string>("shop-1");
 
   // Filter food banks
-  const regions = ["All", "Southeast Michigan", "Metro Detroit", "West Michigan & Upper Peninsula", "Mid-Michigan", "South Central Michigan", "Northeast & Thumb Michigan", "Northern Lower Michigan"];
+  const regions = ["All", "Thanet/Margate", "Ramsgate Road Area"];
 
   const filteredBanks = useMemo(() => {
     return MEMBER_FOOD_BANKS.filter((bank) => {
@@ -36,30 +36,12 @@ export default function MichiganMap() {
     const query = searchTerm.toLowerCase().trim();
 
     // Semi-intelligent county routing
-    if (query.match(/^(482|481|480)/)) { // Metro Detroit
-      setActiveBankId("gleaners");
-      setSelectedRegion("Southeast Michigan");
-    } else if (query.includes("wayne") || query.includes("detroit")) {
-      setActiveBankId("gleaners");
-      setSelectedRegion("Southeast Michigan");
-    } else if (query.includes("oakland") || query.includes("oak park")) {
-      setActiveBankId("forgotten-harvest");
-      setSelectedRegion("Metro Detroit");
-    } else if (query.match(/^(495|494|493|498|499)/) || query.includes("kent") || query.includes("grand rapids") || query.includes("marquette")) {
-      setActiveBankId("gm-west");
-      setSelectedRegion("West Michigan & Upper Peninsula");
-    } else if (query.match(/^(488|489)/) || query.includes("ingham") || query.includes("lansing")) {
-      setActiveBankId("greater-lansing");
-      setSelectedRegion("Mid-Michigan");
-    } else if (query.match(/^(490|492)/) || query.includes("calhoun") || query.includes("battle creek") || query.includes("jackson")) {
-      setActiveBankId("south-michigan");
-      setSelectedRegion("South Central Michigan");
-    } else if (query.match(/^(484|485|486|487)/) || query.includes("genesee") || query.includes("flint") || query.includes("saginaw")) {
-      setActiveBankId("eastern-michigan");
-      setSelectedRegion("Northeast & Thumb Michigan");
-    } else if (query.includes("emmet") || query.includes("charlevoix") || query.includes("harbor springs")) {
-      setActiveBankId("manna-project");
-      setSelectedRegion("Northern Lower Michigan");
+    if (query.includes("margate") || query.includes("high")) {
+      setActiveBankId("shop-1");
+      setSelectedRegion("Thanet/Margate");
+    } else if (query.includes("ramsgate") || query.includes("ct9")) {
+      setActiveBankId("shop-2");
+      setSelectedRegion("Ramsgate Road Area");
     }
   };
 
@@ -71,13 +53,13 @@ export default function MichiganMap() {
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <div className="inline-flex items-center space-x-1.5 bg-brand-green-50 text-brand-green-800 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider">
             <MapPin className="h-3 w-3" />
-            <span>Michigan Food Security Map</span>
+            <span>Margate Assistance Map</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-stone-950">
-            Find Your Local Regional Food Bank
+            Find Your Local MiCommunity Shop
           </h2>
           <p className="text-stone-600 font-light text-base sm:text-lg">
-            We represent a network of **7 master food banks** feeding families day-in and day-out. Enter your county, town, or ZIP code to locate food distributions, mobile pantries, or volunteer hubs nearest you.
+            Find our Margate food bank locations, open to everyone in the local Thanet/Margate area to access low-priced food and support. No membership or benefits required.
           </p>
         </div>
 
@@ -100,11 +82,8 @@ export default function MichiganMap() {
                     setSearchTerm(e.target.value);
                     // Immediate matching as well
                     const term = e.target.value.toLowerCase().trim();
-                    if (term.includes("wayne")) setActiveBankId("gleaners");
-                    else if (term.includes("genesee") || term.includes("flint")) setActiveBankId("eastern-michigan");
-                    else if (term.includes("kent") || term.includes("grand rapids")) setActiveBankId("gm-west");
-                    else if (term.includes("ingham") || term.includes("lansing")) setActiveBankId("greater-lansing");
-                    else if (term.includes("battle creek") || term.includes("calhoun")) setActiveBankId("south-michigan");
+                    if (term.includes("margate")) setActiveBankId("shop-1");
+                    else if (term.includes("ramsgate")) setActiveBankId("shop-2");
                   }}
                   className="w-full pl-11 pr-24 py-3.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-green-600 font-medium text-sm transition-colors text-stone-850 placeholder-stone-400"
                 />
@@ -148,7 +127,7 @@ export default function MichiganMap() {
             {/* List results items */}
             <div className="space-y-3 pt-4 border-t border-stone-100 max-h-80 overflow-y-auto pr-2">
               <span className="text-xs font-mono font-bold text-stone-450 block uppercase tracking-wider">
-                Matching Regional Food Banks ({filteredBanks.length})
+                Matching MiCommunity Shops ({filteredBanks.length})
               </span>
 
               {filteredBanks.map((bank) => {
@@ -172,7 +151,7 @@ export default function MichiganMap() {
                         {bank.name}
                       </h4>
                       <p className="text-[11px] font-light">
-                        HQ: {bank.hqCity}, MI
+                        Location: {bank.hqCity}, UK
                       </p>
                     </div>
                     <div className="text-[10px] font-mono px-2 py-1 bg-stone-200 hover:bg-stone-300 rounded text-stone-800">
@@ -184,7 +163,7 @@ export default function MichiganMap() {
 
               {filteredBanks.length === 0 && (
                 <div className="py-6 text-center text-stone-450 italic text-sm">
-                  No matching Michigan divisions found. Try resetting filters or search &quot;Wayne&quot;.
+                  No matching locations found. Try resetting filters.
                 </div>
               )}
             </div>
@@ -212,7 +191,7 @@ export default function MichiganMap() {
                 <span className="text-[10px] font-mono text-stone-400 block uppercase font-bold">HEADQUARTERS</span>
                 <span className="text-sm font-semibold text-stone-800 flex items-center">
                   <MapPin className="h-4 w-4 text-brand-orange-500 mr-1" />
-                  {activeBank.hqCity}, Michigan
+                  {activeBank.hqCity}, UK
                 </span>
               </div>
             </div>
@@ -272,16 +251,16 @@ export default function MichiganMap() {
               
               <div className="flex items-center space-x-3 text-stone-500 text-xs font-mono">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                <span>Verified non-profit member of FBCM.</span>
+                <span>Verified MiCommunity Shop.</span>
               </div>
 
               <div className="flex space-x-3 w-full sm:w-auto">
                 <a
-                  href={`tel:${activeBank.phone.replace(/\D/g,'')}`}
+                  href={`mailto:micommunity.shop.margate@gmail.com`}
                   className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-4 py-2.5 border border-stone-200 text-stone-750 hover:bg-stone-50 hover:text-stone-950 font-bold text-xs rounded-xl shadow-sm transition-all"
                 >
                   <Phone className="h-3.5 w-3.5" />
-                  <span>Call {activeBank.phone}</span>
+                  <span>Email Us</span>
                 </a>
                 
                 <a
