@@ -136,7 +136,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
             >
               <div className="flex items-center space-x-1">
                 <CheckCircle className="h-4 w-4 text-brand-green-200" />
-                <span>501(c)(3) Accredited</span>
+                <span>CIC Registered</span>
               </div>
               <div className="flex items-center space-x-1">
                 <CheckCircle className="h-4 w-4 text-brand-green-200" />

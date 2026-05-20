@@ -168,20 +168,20 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                         : "bg-stone-50 border-stone-150 hover:bg-stone-100 hover:border-stone-250 text-stone-800"
                     }`}
                   >
-                    ${amt}
+                    £{amt}
                   </button>
                 ))}
               </div>
 
               {/* Custom input details */}
               <div className="space-y-2">
-                <label className="text-xs font-mono text-stone-400 block font-bold">OR ENTER OTHER CUSTOM VALUE ($)</label>
+                <label className="text-xs font-mono text-stone-400 block font-bold">OR ENTER OTHER CUSTOM VALUE (£)</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-stone-400">$</span>
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-stone-400">£</span>
                   <input
                     type="number"
                     min="5"
-                    placeholder="Enter custom dollars amount..."
+                    placeholder="Enter custom pounds amount..."
                     value={customVal}
                     onChange={(e) => {
                       setCustomVal(e.target.value);
@@ -323,7 +323,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   <span className="text-sm font-semibold block">{frequency === "monthly" ? "Monthly Sustainer Gift" : "One-time Direct Aid"}</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-display font-black text-brand-orange-500">${pledgeAmt}</span>
+                  <span className="text-2xl font-display font-black text-brand-orange-500">£{pledgeAmt}</span>
                   <span className="text-[10px] font-mono text-stone-400">/{frequency === "monthly" ? "mo" : "once"}</span>
                 </div>
               </div>
@@ -448,7 +448,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   Glorious support, thank you!
                 </h4>
                 <p className="text-xs sm:text-sm text-stone-650 max-w-sm mx-auto leading-relaxed font-light font-sans">
-                  Your donation of <strong>${pledgeAmt}</strong> has been debited securely. A copy has been delivered to <strong>{donorEmail}</strong>.
+                  Your donation of <strong>£{pledgeAmt}</strong> has been debited securely. A copy has been delivered to <strong>{donorEmail}</strong>.
                 </p>
               </div>
 
@@ -457,7 +457,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 <div className="flex justify-between items-center border-b border-stone-200 pb-3">
                   <div>
                     <span className="text-[9px] font-mono text-stone-400 uppercase tracking-wider">TAX EXEMPT RECEIPT</span>
-                    <span className="font-display font-black text-stone-900 text-sm block">Margate Independent Foodbank CIC</span>
+                    <span className="font-display font-black text-stone-900 text-sm block">Mi Food Bank</span>
                   </div>
                   <Award className="h-6 w-6 text-brand-orange-500 shrink-0" />
                 </div>
@@ -477,7 +477,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   </div>
                   <div>
                     <span className="font-mono text-stone-400 uppercase font-semibold">PLEDGE TOTAL:</span>{" "}
-                    <strong>${pledgeAmt} {frequency === "monthly" ? "Monthly Roster" : "One-Time Contribution"}</strong>
+                    <strong>£{pledgeAmt} {frequency === "monthly" ? "Monthly Roster" : "One-Time Contribution"}</strong>
                   </div>
                   <div>
                     <span className="font-mono text-stone-400 uppercase font-semibold">FINANCIAL LEDGER:</span>{" "}
@@ -507,14 +507,14 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                     const printReceipt = window.open();
                     if (printReceipt) {
                       printReceipt.document.write(`
-                        <html><head><title>MiCommunity Donation Receipt</title></head><body style="font-family:sans-serif;padding:50px;">
+                        <html><head><title>Mi Food Bank Donation Receipt</title></head><body style="font-family:sans-serif;padding:50px;">
                           <h1 style="border-bottom:2px solid #2d5a27;padding-bottom:10px;">Tax Exempt Donation Receipt</h1>
-                          <p><strong>Margate Independent Foodbank CIC</strong></p>
+                          <p><strong>Mi Food Bank</strong></p>
                           <hr/>
                           <p><strong>Donor Name:</strong> ${donorName}</p>
-                          <p><strong>Amount:</strong> $${pledgeAmt} (${frequency})</p>
+                          <p><strong>Amount:</strong> £${pledgeAmt} (${frequency})</p>
                           <p><strong>Dedicatory Honor:</strong> ${isTribute ? tributeName : 'N/A'}</p>
-                          <p><strong>EIN Registration:</strong> 38-xxxxxxx (Verified 501(c)(3))</p>
+                          <p><strong>Registration Info:</strong> Registered Community Interest Company</p>
                           <p><strong>Reference Code:</strong> MICOM-${Math.floor(Math.random() * 89999 + 10000)}</p>
                           <p>Thank you for nourishing neighboring lives!</p>
                         </body></html>

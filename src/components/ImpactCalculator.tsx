@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, Landmark, Plus, ThumbsUp, DollarSign, Sparkles } from "lucide-react";
+import { Heart, Landmark, Plus, ThumbsUp, PoundSterling, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 
 interface ImpactCalculatorProps {
@@ -15,10 +15,10 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
     let multiplier = frequency === "monthly" ? 12 : 1;
     let totalValue = value * multiplier;
 
-    let meals = Math.round(totalValue * 10); // $1 = approx 10 meals
-    let milkCartons = Math.round(totalValue / 2.50); // $2.50 = Carton of wholesome local milk
-    let familiesFedWeeks = Math.round(totalValue / 25); // $25 feeds a family for a week
-    let produceCases = Math.round(totalValue / 15); // $15 rescued farm produce case
+    let meals = Math.round(totalValue * 10); // £1 = approx 10 meals
+    let milkCartons = Math.round(totalValue / 2.50); // £2.50 = Carton of wholesome local milk
+    let familiesFedWeeks = Math.round(totalValue / 25); // £25 feeds a family for a week
+    let produceCases = Math.round(totalValue / 15); // £15 rescued farm produce case
 
     if (value <= 15) {
       return {
@@ -99,10 +99,10 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
             <span>Interactive Impact Calculator</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-black text-stone-900 tracking-tight">
-            See the Power of Your Dollar
+            See the Power of Your Pound
           </h2>
           <p className="text-stone-600 font-light text-base sm:text-lg">
-            Unlike standard grocery prices, our massive scale and rural partnerships mean **$1 provides nearly 10 nutritional meals**. Slide the bar below to calculate your real local footprint!
+            Unlike standard grocery prices, our scale and rural partnerships mean **£1 provides nearly 10 nutritional meals**. Slide the bar below to calculate your real local footprint!
           </p>
         </div>
 
@@ -150,7 +150,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
               <div className="flex justify-between items-end">
                 <span className="text-sm font-mono text-stone-500 uppercase tracking-widest font-bold">Contribution Amount</span>
                 <span className="text-4xl font-display font-black text-brand-green-800 flex items-center tracking-tight">
-                  <DollarSign className="h-7 w-7 text-brand-orange-500 stroke-[3px]" />
+                  <PoundSterling className="h-7 w-7 text-brand-orange-500 stroke-[3px]" />
                   <span>{sliderVal}</span>
                   <span className="text-sm font-semibold text-stone-400 ml-1">/{frequency === "monthly" ? "mo" : "once"}</span>
                 </span>
@@ -171,12 +171,12 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
                 
                 {/* Visual guidelines */}
                 <div className="flex justify-between text-[11px] font-mono text-stone-400 pt-3">
-                  <span>$5</span>
-                  <span>$100</span>
-                  <span>$200</span>
-                  <span>$300</span>
-                  <span>$400</span>
-                  <span>$500+</span>
+                  <span>£5</span>
+                  <span>£100</span>
+                  <span>£200</span>
+                  <span>£300</span>
+                  <span>£400</span>
+                  <span>£500+</span>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
                         : "bg-stone-50 text-stone-600 border-stone-200 hover:border-brand-green-200 hover:bg-stone-100"
                     }`}
                   >
-                    ${amt}
+                    £{amt}
                   </button>
                 ))}
               </div>
@@ -301,11 +301,11 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
                 onClick={() => onDonateClick(sliderVal, frequency)}
                 className="w-full py-4 bg-brand-orange-500 text-stone-900 font-extrabold rounded-xl shadow hover:bg-brand-orange-600 transition-all font-display text-base cursor-pointer tracking-wider flex items-center justify-center space-x-2"
               >
-                <span>Sponsor program at ${sliderVal}/mo</span>
+                <span>Sponsor program at £{sliderVal}/mo</span>
                 <Heart className="h-4.5 w-4.5 fill-stone-900" />
               </button>
               <span className="text-[10px] font-mono text-center block text-brand-green-150 mt-2">
-                Saves up to $100 annually in family household food costs.
+                Saves up to £100 annually in family household food costs.
               </span>
             </div>
 

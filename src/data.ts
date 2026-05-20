@@ -3,7 +3,7 @@ import { BlogPost, VolunteerRole, MemberFoodBank, Recipe } from "./types";
 export const MEMBER_FOOD_BANKS: MemberFoodBank[] = [
   {
     id: "shop-1",
-    name: "Margate Independent Foodbank (Shop 1)",
+    name: "Mi Food Bank (Shop 1)",
     hqCity: "Margate",
     regionServed: "Thanet/Margate",
     countiesCovered: ["Margate", "Thanet"],
@@ -16,7 +16,7 @@ export const MEMBER_FOOD_BANKS: MemberFoodBank[] = [
   },
   {
     id: "shop-2",
-    name: "MiCommunity (Shop 2)",
+    name: "Mi Food Bank (Shop 2)",
     hqCity: "Margate",
     regionServed: "Ramsgate Road Area",
     countiesCovered: ["Margate", "Ramsgate"],
@@ -86,13 +86,13 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "1",
     title: "Margate Farm to Family: Harnessing the Summer Harvest",
-    excerpt: "How a new collaboration between local Kent growers and MiCommunity is bringing fresh fruit to our shops.",
+    excerpt: "How a new collaboration between local Kent growers and Mi Food Bank is bringing fresh fruit to our shops.",
     category: "News",
     readTime: "4 min read",
     date: "May 18, 2026",
     author: "Elena Vasquez, Agricultural Liaison",
     image: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&q=80&w=800",
-    content: "Our region has an abundance of agricultural richness, yet food insecurity persists. In a groundbreaking joint effort, local farmers are pledging surplus seasonal products directly to MiCommunity. Instead of allowing valuable crops to go unused due to supply-chain friction, we route vans directly to farms. The result? Over 4,500 pounds of pristine, vitamin-rich fruit distributed to Margate households in the past month alone. Read on to learn how this model is scaling up for the autumn harvest.",
+    content: "Our region has an abundance of agricultural richness, yet food insecurity persists. In a groundbreaking joint effort, local farmers are pledging surplus seasonal products directly to Mi Food Bank. Instead of allowing valuable crops to go unused due to supply-chain friction, we route vans directly to farms. The result? Over 4,500 pounds of pristine, vitamin-rich fruit distributed to Margate households in the past month alone. Read on to learn how this model is scaling up for the autumn harvest.",
     likes: 34,
     commentsCount: 3,
     tags: ["Farming", "Fresh Produce", "Local Agriculture"]
@@ -106,7 +106,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "May 12, 2026",
     author: "Marcus T., Community Voice",
     image: "https://images.unsplash.com/photo-1484863137850-59afcfe05386?auto=format&fit=crop&q=80&w=800",
-    content: "When the plant downscaled operations, I suddenly found myself with $40 in my checking account and three growing kids to feed. The shame was paralyzing. Then, a flyer from Greater Lansing Food Bank pointed me to a Mobile Food Pantry at a local school parking lot. The volunteers didn't judge me. They smiled, asked how I was, and loaded thirty pounds of premium potatoes, milk crates, canned beans, and fresh grapes into my trunk. That food bridge didn't just nourish our bodies—it restored my hope. Today, I'm back on my feet and signed up as a regular volunteer to give back to the network that kept my family floating.",
+    content: "When the plant downscaled operations, I suddenly found myself with £40 in my checking account and three growing kids to feed. The shame was paralyzing. Then, a flyer from a local community group pointed me to Mi Food Bank. The volunteers didn't judge me. They smiled, asked how I was, and loaded thirty pounds of premium potatoes, milk crates, canned beans, and fresh grapes into my bag. That food bridge didn't just nourish our bodies—it restored my hope. Today, I'm back on my feet and signed up as a regular volunteer to give back to the network that kept my family floating.",
     likes: 58,
     commentsCount: 7,
     tags: ["Testimonial", "Mobile Pantry", "Family Support"]

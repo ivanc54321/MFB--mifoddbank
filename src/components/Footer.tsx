@@ -31,7 +31,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
         <div className="lg:col-span-5 space-y-4">
           <span className="text-[10px] font-mono tracking-widest text-brand-orange-500 uppercase block font-bold">STAY UPDATED</span>
           <h3 className="text-2xl font-display font-bold text-white tracking-tight">
-            Join the MiCommunity list
+            Join the Mi Food Bank list
           </h3>
           <p className="text-sm font-light text-stone-400 max-w-sm leading-relaxed">
             Sowing news of local food donations, new shop items, and community support in Margate. No spam.
@@ -43,7 +43,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
           {success ? (
             <div id="newsletter-success-note" className="flex items-center space-x-2 text-brand-orange-400 text-sm font-semibold animate-scale-up">
               <CheckCircle className="h-5 w-5 text-emerald-500 animate-pulse" />
-              <span>Wonderful! You are now subscribed to the MiCommunity Newsletter network list.</span>
+              <span>Wonderful! You are now subscribed to the Mi Food Bank Newsletter network list.</span>
             </div>
           ) : (
             <form onSubmit={handleSubscribe} className="relative w-full max-w-md">
@@ -83,11 +83,11 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
           </div>
 
           <p className="text-xs text-stone-500 font-light leading-relaxed">
-            Providing low-priced food, household goods, and support to the local community in Thanet/Margate. Margate Independent Foodbank CIC.
+            Providing low-priced food, household goods, and support to the local community in Thanet/Margate. Mi Food Bank.
           </p>
 
           <div className="text-[10px] font-mono text-stone-605">
-            HQ ID: 501(c)(3) Public Charity Network
+            HQ ID: Registered Community Interest Company (CIC)
           </div>
         </div>
 
@@ -137,9 +137,9 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
           <h4 className="text-xs font-mono text-stone-400 uppercase font-bold tracking-widest font-sans">Credentials</h4>
           
           <div className="space-y-1 bg-stone-900/40 p-3 rounded-xl border border-stone-850 font-sans">
-            <span className="text-[10px] uppercase font-bold text-emerald-400 block font-mono">DEDUCTIBILITY RATING</span>
+            <span className="text-[10px] uppercase font-bold text-emerald-400 block font-mono">FINANCIAL TRANSPARENCY</span>
             <p className="text-[10px] leading-relaxed">
-              Donations are fully tax-deductible to the extent allowed under Section 501(c)(3) of the IRS Code.
+              Donations securely support local community projects under UK CIC regulations.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ export default function Footer({ onNavClick, onOpenDonate }: FooterProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           
           <div className="text-center sm:text-left">
-            <span>© {new Date().getFullYear()} Margate Independent Foodbank CIC. All Rights Reserved. Designed for modern impact.</span>
+            <span>© {new Date().getFullYear()} Mi Food Bank. All Rights Reserved. Designed for modern impact.</span>
           </div>
 
           <div className="flex space-x-4">

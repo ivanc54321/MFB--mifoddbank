@@ -56,7 +56,7 @@ export default function MichiganMap() {
             <span>Margate Assistance Map</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-stone-950">
-            Find Your Local MiCommunity Shop
+            Find Your Local Mi Food Bank Shop
           </h2>
           <p className="text-stone-600 font-light text-base sm:text-lg">
             Find our Margate food bank locations, open to everyone in the local Thanet/Margate area to access low-priced food and support. No membership or benefits required.
@@ -127,7 +127,7 @@ export default function MichiganMap() {
             {/* List results items */}
             <div className="space-y-3 pt-4 border-t border-stone-100 max-h-80 overflow-y-auto pr-2">
               <span className="text-xs font-mono font-bold text-stone-450 block uppercase tracking-wider">
-                Matching MiCommunity Shops ({filteredBanks.length})
+                Matching Mi Food Bank Shops ({filteredBanks.length})
               </span>
 
               {filteredBanks.map((bank) => {
@@ -251,7 +251,7 @@ export default function MichiganMap() {
               
               <div className="flex items-center space-x-3 text-stone-500 text-xs font-mono">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                <span>Verified MiCommunity Shop.</span>
+                <span>Verified Mi Food Bank Shop.</span>
               </div>
 
               <div className="flex space-x-3 w-full sm:w-auto">

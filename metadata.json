@@ -1,6 +1,6 @@
 {
-  "name": "Margate Independent Foodbank",
-  "description": "An interactive, modern portal for the Margate Independent Foodbank to scale volunteer engagement, boost secure donations, map food assistance, and share community updates.",
+  "name": "Mi Food Bank",
+  "description": "An interactive, modern portal for Mi Food Bank to scale volunteer engagement, boost secure donations, map food assistance, and share community updates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

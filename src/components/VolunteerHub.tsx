@@ -198,15 +198,15 @@ export default function VolunteerHub() {
                       if (printW) {
                         printW.document.write(`
                           <html><head><title>Volunteer Pass</title></head><body style="font-family:sans-serif;padding:40px;">
-                            <h1>MiCommunity Volunteer Gate Pass</h1>
-                            <p>Thank you for partnering with the Margate Independent Foodbank CIC.</p>
+                            <h1>Mi Food Bank Volunteer Gate Pass</h1>
+                            <p>Thank you for partnering with Mi Food Bank.</p>
                             <ul>
                               <li><strong>Volunteer Name:</strong> ${fullName}</li>
                               <li><strong>Assigned Activity:</strong> ${activeRoleDetails.title}</li>
                               <li><strong>Location:</strong> ${county}</li>
                               <li><strong>Shift Slot:</strong> ${activeShift}</li>
                             </ul>
-                            <small>MiCommunity Credential Key: VC-${Math.floor(Math.random() * 99999 + 1000)}</small>
+                            <small>Mi Food Bank Credential Key: VC-${Math.floor(Math.random() * 99999 + 1000)}</small>
                           </body></html>
                         `);
                         printW.print();
