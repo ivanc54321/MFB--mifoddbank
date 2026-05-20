@@ -1,0 +1,307 @@
+import React, { useState, useMemo } from "react";
+import { Search, MapPin, ExternalLink, Phone, ShieldCheck, Activity, Users, Truck, Info } from "lucide-react";
+import { MEMBER_FOOD_BANKS } from "../data";
+import { MemberFoodBank } from "../types";
+
+export default function MichiganMap() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState<string>("All");
+  const [activeBankId, setActiveBankId] = useState<string>("gleaners");
+
+  // Filter food banks
+  const regions = ["All", "Southeast Michigan", "Metro Detroit", "West Michigan & Upper Peninsula", "Mid-Michigan", "South Central Michigan", "Northeast & Thumb Michigan", "Northern Lower Michigan"];
+
+  const filteredBanks = useMemo(() => {
+    return MEMBER_FOOD_BANKS.filter((bank) => {
+      // Filter by search text (bank name, city, counties)
+      const matchesSearch =
+        bank.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bank.hqCity.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bank.countiesCovered.some((county) => county.toLowerCase().includes(searchTerm.toLowerCase()));
+
+      // Filter by click region
+      const matchesRegion = selectedRegion === "All" || bank.regionServed === selectedRegion;
+
+      return matchesSearch && matchesRegion;
+    });
+  }, [searchTerm, selectedRegion]);
+
+  const activeBank = useMemo(() => {
+    return MEMBER_FOOD_BANKS.find((b) => b.id === activeBankId) || MEMBER_FOOD_BANKS[0];
+  }, [activeBankId]);
+
+  // Simulated zip-code routing
+  const handleZipSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = searchTerm.toLowerCase().trim();
+
+    // Semi-intelligent county routing
+    if (query.match(/^(482|481|480)/)) { // Metro Detroit
+      setActiveBankId("gleaners");
+      setSelectedRegion("Southeast Michigan");
+    } else if (query.includes("wayne") || query.includes("detroit")) {
+      setActiveBankId("gleaners");
+      setSelectedRegion("Southeast Michigan");
+    } else if (query.includes("oakland") || query.includes("oak park")) {
+      setActiveBankId("forgotten-harvest");
+      setSelectedRegion("Metro Detroit");
+    } else if (query.match(/^(495|494|493|498|499)/) || query.includes("kent") || query.includes("grand rapids") || query.includes("marquette")) {
+      setActiveBankId("gm-west");
+      setSelectedRegion("West Michigan & Upper Peninsula");
+    } else if (query.match(/^(488|489)/) || query.includes("ingham") || query.includes("lansing")) {
+      setActiveBankId("greater-lansing");
+      setSelectedRegion("Mid-Michigan");
+    } else if (query.match(/^(490|492)/) || query.includes("calhoun") || query.includes("battle creek") || query.includes("jackson")) {
+      setActiveBankId("south-michigan");
+      setSelectedRegion("South Central Michigan");
+    } else if (query.match(/^(484|485|486|487)/) || query.includes("genesee") || query.includes("flint") || query.includes("saginaw")) {
+      setActiveBankId("eastern-michigan");
+      setSelectedRegion("Northeast & Thumb Michigan");
+    } else if (query.includes("emmet") || query.includes("charlevoix") || query.includes("harbor springs")) {
+      setActiveBankId("manna-project");
+      setSelectedRegion("Northern Lower Michigan");
+    }
+  };
+
+  return (
+    <section id="food-map" className="py-24 bg-stone-50 text-stone-900 border-t border-stone-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Block */}
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div className="inline-flex items-center space-x-1.5 bg-brand-green-50 text-brand-green-800 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+            <MapPin className="h-3 w-3" />
+            <span>Michigan Food Security Map</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-stone-950">
+            Find Your Local Regional Food Bank
+          </h2>
+          <p className="text-stone-600 font-light text-base sm:text-lg">
+            We represent a network of **7 master food banks** feeding families day-in and day-out. Enter your county, town, or ZIP code to locate food distributions, mobile pantries, or volunteer hubs nearest you.
+          </p>
+        </div>
+
+        {/* Directory interactive layouts */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          {/* Column A: Search & County grid list */}
+          <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-md flex flex-col justify-between space-y-6">
+            
+            <div className="space-y-6">
+              <span className="text-xs font-mono font-bold text-stone-400 block uppercase tracking-wider">LOOKUP DIRECTORY</span>
+              
+              {/* Form Search */}
+              <form onSubmit={handleZipSearch} className="relative">
+                <input
+                  type="text"
+                  placeholder="Enter County (e.g. Wayne, Kent) or ZIP..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    // Immediate matching as well
+                    const term = e.target.value.toLowerCase().trim();
+                    if (term.includes("wayne")) setActiveBankId("gleaners");
+                    else if (term.includes("genesee") || term.includes("flint")) setActiveBankId("eastern-michigan");
+                    else if (term.includes("kent") || term.includes("grand rapids")) setActiveBankId("gm-west");
+                    else if (term.includes("ingham") || term.includes("lansing")) setActiveBankId("greater-lansing");
+                    else if (term.includes("battle creek") || term.includes("calhoun")) setActiveBankId("south-michigan");
+                  }}
+                  className="w-full pl-11 pr-24 py-3.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-green-600 font-medium text-sm transition-colors text-stone-850 placeholder-stone-400"
+                />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
+                <button
+                  type="submit"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-brand-green-800 text-white font-bold rounded-lg text-xs hover:bg-brand-green-900 transition-colors cursor-pointer"
+                >
+                  Locate
+                </button>
+              </form>
+
+              {/* Geographic Filters Grid select buttons */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-mono uppercase text-stone-400 block tracking-widest font-bold">REGIONAL ZONE SELECTOR</span>
+                <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto pr-1">
+                  {regions.map((region) => (
+                    <button
+                      key={region}
+                      onClick={() => {
+                        setSelectedRegion(region);
+                        // Pick first associated bank from that region
+                        const associated = MEMBER_FOOD_BANKS.find((b) => b.regionServed === region);
+                        if (associated) {
+                          setActiveBankId(associated.id);
+                        }
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                        selectedRegion === region
+                          ? "bg-brand-orange-500 text-stone-900 shadow-sm"
+                          : "bg-stone-50 hover:bg-stone-100 text-stone-600 border border-stone-150"
+                      }`}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* List results items */}
+            <div className="space-y-3 pt-4 border-t border-stone-100 max-h-80 overflow-y-auto pr-2">
+              <span className="text-xs font-mono font-bold text-stone-450 block uppercase tracking-wider">
+                Matching Regional Food Banks ({filteredBanks.length})
+              </span>
+
+              {filteredBanks.map((bank) => {
+                const isActive = activeBankId === bank.id;
+                return (
+                  <button
+                    key={bank.id}
+                    id={`bank-list-item-${bank.id}`}
+                    onClick={() => setActiveBankId(bank.id)}
+                    className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer group ${
+                      isActive
+                        ? "bg-stone-900 text-white border-stone-900 shadow-md"
+                        : "bg-stone-50 text-stone-700 border-stone-200/60 hover:bg-stone-100 hover:border-stone-300"
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <span className="text-xs font-mono text-brand-orange-500 font-extrabold uppercase block">
+                        {bank.regionServed}
+                      </span>
+                      <h4 className="font-display font-bold text-sm tracking-tight">
+                        {bank.name}
+                      </h4>
+                      <p className="text-[11px] font-light">
+                        HQ: {bank.hqCity}, MI
+                      </p>
+                    </div>
+                    <div className="text-[10px] font-mono px-2 py-1 bg-stone-200 hover:bg-stone-300 rounded text-stone-800">
+                      {bank.countiesCovered.length} Counties
+                    </div>
+                  </button>
+                );
+              })}
+
+              {filteredBanks.length === 0 && (
+                <div className="py-6 text-center text-stone-450 italic text-sm">
+                  No matching Michigan divisions found. Try resetting filters or search &quot;Wayne&quot;.
+                </div>
+              )}
+            </div>
+
+          </div>
+
+          {/* Column B: Showcase chosen food bank details */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-md flex flex-col justify-between space-y-8 relative">
+            
+            {/* Visual Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-stone-100 pb-6 gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center space-x-2">
+                  <span className="h-2.5 w-2.5 rounded-full animate-pulse bg-emerald-500" />
+                  <span className="text-xs font-mono uppercase text-stone-450 tracking-wider font-bold">
+                    ACTIVE NETWORK BRANCH MEMBER
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-display font-black text-stone-950 tracking-tight">
+                  {activeBank.name}
+                </h3>
+              </div>
+              
+              <div className="flex flex-col text-right sm:items-end">
+                <span className="text-[10px] font-mono text-stone-400 block uppercase font-bold">HEADQUARTERS</span>
+                <span className="text-sm font-semibold text-stone-800 flex items-center">
+                  <MapPin className="h-4 w-4 text-brand-orange-500 mr-1" />
+                  {activeBank.hqCity}, Michigan
+                </span>
+              </div>
+            </div>
+
+            {/* Metrics cards bar */}
+            <div className="grid grid-cols-2 gap-4">
+              
+              <div className="bg-stone-50 border border-stone-200/60 p-4 rounded-2xl">
+                <div className="flex items-center space-x-3 mb-1">
+                  <Activity className="h-5 w-5 text-brand-green-800" />
+                  <span className="text-xs font-mono font-medium text-stone-500 tracking-wider">ANNUAL MEALS</span>
+                </div>
+                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900">
+                  {activeBank.mealsDistributedMillions}M
+                </span>
+                <p className="text-[11px] text-stone-500 mt-1 italic font-light">Direct meals distributed</p>
+              </div>
+
+              <div className="bg-stone-50 border border-stone-200/60 p-4 rounded-2xl">
+                <div className="flex items-center space-x-3 mb-1">
+                  <Users className="h-5 w-5 text-brand-orange-500" />
+                  <span className="text-xs font-mono font-medium text-stone-500 tracking-wider">HOUSEHOLDS AIDED</span>
+                </div>
+                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900">
+                  {(activeBank.householdsServedAnnually / 1000).toFixed(0)}K+
+                </span>
+                <p className="text-[11px] text-stone-500 mt-1 italic font-light">Registered households fed</p>
+              </div>
+
+            </div>
+
+            {/* Description and narrative */}
+            <div className="space-y-4">
+              <span className="text-xs font-mono tracking-widest uppercase font-bold text-stone-400 block">Mission Summary</span>
+              <p className="text-stone-700 font-light leading-relaxed text-sm sm:text-base">
+                {activeBank.description}
+              </p>
+
+              {/* Counties tag list */}
+              <div className="space-y-2 pt-2">
+                <span className="text-xs font-mono text-stone-450 uppercase block font-bold">OFFICIAL COVERAGE ({activeBank.countiesCovered.length} COUNTIES):</span>
+                <div className="flex flex-wrap gap-1">
+                  {activeBank.countiesCovered.map((cty) => (
+                    <span
+                      key={cty}
+                      className="px-2 py-1 bg-brand-green-50 text-brand-green-800 text-[10px] font-mono border border-brand-green-100 rounded-md"
+                    >
+                      {cty} County
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer action tools */}
+            <div className="pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-4 justify-between items-center">
+              
+              <div className="flex items-center space-x-3 text-stone-500 text-xs font-mono">
+                <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                <span>Verified non-profit member of FBCM.</span>
+              </div>
+
+              <div className="flex space-x-3 w-full sm:w-auto">
+                <a
+                  href={`tel:${activeBank.phone.replace(/\D/g,'')}`}
+                  className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-4 py-2.5 border border-stone-200 text-stone-750 hover:bg-stone-50 hover:text-stone-950 font-bold text-xs rounded-xl shadow-sm transition-all"
+                >
+                  <Phone className="h-3.5 w-3.5" />
+                  <span>Call {activeBank.phone}</span>
+                </a>
+                
+                <a
+                  href={activeBank.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-5 py-2.5 bg-brand-green-800 hover:bg-brand-green-900 border border-brand-green-900 text-white font-bold text-xs rounded-xl shadow transition-all"
+                >
+                  <span>Visit Website</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
