@@ -8,18 +8,13 @@ interface LogoProps {
 
 export default function Logo({ className = "", iconOnly = false, lightText = true }: LogoProps) {
   return (
-    <div className={`flex items-center space-x-3 select-none ${className}`}>
-      {/* Styled text to match "MiFoodbank" brand style exactly */}
-      {!iconOnly && (
-        <div className="flex items-baseline font-sans">
-          <span className="font-extrabold text-[23px] tracking-tight text-[#009245]">
-            Mi
-          </span>
-          <span className={`font-bold text-[23px] tracking-tight ${lightText ? "text-stone-100" : "text-stone-850"}`}>
-            Foodbank
-          </span>
-        </div>
-      )}
+    <div className={`flex items-center select-none ${className}`}>
+      <img 
+        src="https://i.ibb.co/yns4dn2N/Mi-Foodbank-2048x1152-1-copy.png" 
+        alt="Mi Foodbank" 
+        className="h-10 sm:h-12 w-auto object-contain" 
+        referrerPolicy="no-referrer"
+      />
     </div>
   );
 }

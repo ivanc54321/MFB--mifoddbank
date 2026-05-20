@@ -76,9 +76,9 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight leading-none text-white"
+              className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-none text-white whitespace-nowrap"
             >
-              No Neighbor <br />
+              No Neighbour <br className="lg:hidden" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange-500 via-amber-400 to-yellow-500">
                 Left Hungry.
               </span>
