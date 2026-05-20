@@ -46,7 +46,7 @@ export default function MichiganMap() {
   };
 
   return (
-    <section id="food-map" className="py-24 bg-stone-50 text-stone-900 border-t border-stone-100">
+    <section id="food-map" className="py-24 bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-100 border-t border-stone-100 dark:border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Block */}
@@ -55,10 +55,10 @@ export default function MichiganMap() {
             <MapPin className="h-3 w-3" />
             <span>Margate Assistance Map</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-stone-950">
+          <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-stone-950 dark:text-stone-50">
             Find Your Local Mi Food Bank Shop
           </h2>
-          <p className="text-stone-600 font-light text-base sm:text-lg">
+          <p className="text-stone-600 dark:text-stone-400 font-light text-base sm:text-lg">
             Find our Margate food bank locations, open to everyone in the local Thanet/Margate area to access low-priced food and support. No membership or benefits required.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function MichiganMap() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Column A: Search & County grid list */}
-          <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-md flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 bg-white dark:bg-stone-950 p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800/80 shadow-md flex flex-col justify-between space-y-6">
             
             <div className="space-y-6">
               <span className="text-xs font-mono font-bold text-stone-400 block uppercase tracking-wider">LOOKUP DIRECTORY</span>
@@ -85,7 +85,7 @@ export default function MichiganMap() {
                     if (term.includes("margate")) setActiveBankId("shop-1");
                     else if (term.includes("ramsgate")) setActiveBankId("shop-2");
                   }}
-                  className="w-full pl-11 pr-24 py-3.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-green-600 font-medium text-sm transition-colors text-stone-850 placeholder-stone-400"
+                  className="w-full pl-11 pr-24 py-3.5 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl focus:outline-none focus:border-brand-green-600 font-medium text-sm transition-colors text-stone-850 dark:text-stone-200 placeholder-stone-400"
                 />
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
                 <button
@@ -113,8 +113,8 @@ export default function MichiganMap() {
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                         selectedRegion === region
-                          ? "bg-brand-orange-500 text-stone-900 shadow-sm"
-                          : "bg-stone-50 hover:bg-stone-100 text-stone-600 border border-stone-150"
+                          ? "bg-brand-orange-500 text-stone-900 dark:text-stone-100 shadow-sm"
+                          : "bg-stone-50 dark:bg-stone-900 hover:bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-150"
                       }`}
                     >
                       {region}
@@ -125,7 +125,7 @@ export default function MichiganMap() {
             </div>
 
             {/* List results items */}
-            <div className="space-y-3 pt-4 border-t border-stone-100 max-h-80 overflow-y-auto pr-2">
+            <div className="space-y-3 pt-4 border-t border-stone-100 dark:border-stone-800 max-h-80 overflow-y-auto pr-2">
               <span className="text-xs font-mono font-bold text-stone-450 block uppercase tracking-wider">
                 Matching Mi Food Bank Shops ({filteredBanks.length})
               </span>
@@ -140,7 +140,7 @@ export default function MichiganMap() {
                     className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer group ${
                       isActive
                         ? "bg-stone-900 text-white border-stone-900 shadow-md"
-                        : "bg-stone-50 text-stone-700 border-stone-200/60 hover:bg-stone-100 hover:border-stone-300"
+                        : "bg-stone-50 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border-stone-200 dark:border-stone-800/60 hover:bg-stone-100 dark:bg-stone-800 hover:border-stone-300 dark:border-stone-700"
                     }`}
                   >
                     <div className="space-y-1">
@@ -154,7 +154,7 @@ export default function MichiganMap() {
                         Location: {bank.hqCity}, UK
                       </p>
                     </div>
-                    <div className="text-[10px] font-mono px-2 py-1 bg-stone-200 hover:bg-stone-300 rounded text-stone-800">
+                    <div className="text-[10px] font-mono px-2 py-1 bg-stone-200 hover:bg-stone-300 rounded text-stone-800 dark:text-stone-200">
                       {bank.countiesCovered.length} Counties
                     </div>
                   </button>
@@ -171,10 +171,10 @@ export default function MichiganMap() {
           </div>
 
           {/* Column B: Showcase chosen food bank details */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-md flex flex-col justify-between space-y-8 relative">
+          <div className="lg:col-span-7 bg-white dark:bg-stone-950 p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800/80 shadow-md flex flex-col justify-between space-y-8 relative">
             
             {/* Visual Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-stone-100 pb-6 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-6 gap-4">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2">
                   <span className="h-2.5 w-2.5 rounded-full animate-pulse bg-emerald-500" />
@@ -182,14 +182,14 @@ export default function MichiganMap() {
                     ACTIVE NETWORK BRANCH MEMBER
                   </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-display font-black text-stone-950 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-display font-black text-stone-950 dark:text-stone-50 tracking-tight">
                   {activeBank.name}
                 </h3>
               </div>
               
               <div className="flex flex-col text-right sm:items-end">
                 <span className="text-[10px] font-mono text-stone-400 block uppercase font-bold">HEADQUARTERS</span>
-                <span className="text-sm font-semibold text-stone-800 flex items-center">
+                <span className="text-sm font-semibold text-stone-800 dark:text-stone-200 flex items-center">
                   <MapPin className="h-4 w-4 text-brand-orange-500 mr-1" />
                   {activeBank.hqCity}, UK
                 </span>
@@ -199,26 +199,26 @@ export default function MichiganMap() {
             {/* Metrics cards bar */}
             <div className="grid grid-cols-2 gap-4">
               
-              <div className="bg-stone-50 border border-stone-200/60 p-4 rounded-2xl">
+              <div className="bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800/60 p-4 rounded-2xl">
                 <div className="flex items-center space-x-3 mb-1">
                   <Activity className="h-5 w-5 text-brand-green-800" />
-                  <span className="text-xs font-mono font-medium text-stone-500 tracking-wider">ANNUAL MEALS</span>
+                  <span className="text-xs font-mono font-medium text-stone-500 dark:text-stone-400 tracking-wider">ANNUAL MEALS</span>
                 </div>
-                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900">
+                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900 dark:text-stone-100">
                   {activeBank.mealsDistributedMillions}M
                 </span>
-                <p className="text-[11px] text-stone-500 mt-1 italic font-light">Direct meals distributed</p>
+                <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1 italic font-light">Direct meals distributed</p>
               </div>
 
-              <div className="bg-stone-50 border border-stone-200/60 p-4 rounded-2xl">
+              <div className="bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800/60 p-4 rounded-2xl">
                 <div className="flex items-center space-x-3 mb-1">
                   <Users className="h-5 w-5 text-brand-orange-500" />
-                  <span className="text-xs font-mono font-medium text-stone-500 tracking-wider">HOUSEHOLDS AIDED</span>
+                  <span className="text-xs font-mono font-medium text-stone-500 dark:text-stone-400 tracking-wider">HOUSEHOLDS AIDED</span>
                 </div>
-                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900">
+                <span className="text-2xl sm:text-3xl font-display font-black text-stone-900 dark:text-stone-100">
                   {(activeBank.householdsServedAnnually / 1000).toFixed(0)}K+
                 </span>
-                <p className="text-[11px] text-stone-500 mt-1 italic font-light">Registered households fed</p>
+                <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1 italic font-light">Registered households fed</p>
               </div>
 
             </div>
@@ -226,7 +226,7 @@ export default function MichiganMap() {
             {/* Description and narrative */}
             <div className="space-y-4">
               <span className="text-xs font-mono tracking-widest uppercase font-bold text-stone-400 block">Mission Summary</span>
-              <p className="text-stone-700 font-light leading-relaxed text-sm sm:text-base">
+              <p className="text-stone-700 dark:text-stone-300 font-light leading-relaxed text-sm sm:text-base">
                 {activeBank.description}
               </p>
 
@@ -247,9 +247,9 @@ export default function MichiganMap() {
             </div>
 
             {/* Footer action tools */}
-            <div className="pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-4 justify-between items-center">
+            <div className="pt-6 border-t border-stone-100 dark:border-stone-800 flex flex-col sm:flex-row gap-4 justify-between items-center">
               
-              <div className="flex items-center space-x-3 text-stone-500 text-xs font-mono">
+              <div className="flex items-center space-x-3 text-stone-500 dark:text-stone-400 text-xs font-mono">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
                 <span>Verified Mi Food Bank Shop.</span>
               </div>
@@ -257,7 +257,7 @@ export default function MichiganMap() {
               <div className="flex space-x-3 w-full sm:w-auto">
                 <a
                   href={`mailto:micommunity.shop.margate@gmail.com`}
-                  className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-4 py-2.5 border border-stone-200 text-stone-750 hover:bg-stone-50 hover:text-stone-950 font-bold text-xs rounded-xl shadow-sm transition-all"
+                  className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-4 py-2.5 border border-stone-200 dark:border-stone-800 text-stone-750 dark:text-stone-300 hover:bg-stone-50 dark:bg-stone-900 hover:text-stone-950 dark:text-stone-50 font-bold text-xs rounded-xl shadow-sm transition-all"
                 >
                   <Phone className="h-3.5 w-3.5" />
                   <span>Email Us</span>

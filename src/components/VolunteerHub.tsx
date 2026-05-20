@@ -118,7 +118,7 @@ export default function VolunteerHub() {
                 >
                   <div className="flex justify-between items-center w-full">
                     <span className={`text-[10px] font-mono px-2 py-0.5 rounded uppercase font-bold ${
-                      isSelected ? "bg-white/10 text-brand-orange-400" : "bg-stone-800 text-stone-400"
+                      isSelected ? "bg-white dark:bg-stone-950/10 text-brand-orange-400" : "bg-stone-800 text-stone-400"
                     }`}>
                       {role.category}
                     </span>
@@ -167,19 +167,19 @@ export default function VolunteerHub() {
                   
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div>
-                      <span className="text-stone-500 font-semibold block uppercase">POSITION</span>
+                      <span className="text-stone-500 dark:text-stone-400 font-semibold block uppercase">POSITION</span>
                       <span className="text-stone-200 font-bold">{activeRoleDetails.title}</span>
                     </div>
                     <div>
-                      <span className="text-stone-500 font-semibold block uppercase">LOCATION</span>
+                      <span className="text-stone-500 dark:text-stone-400 font-semibold block uppercase">LOCATION</span>
                       <span className="text-stone-200 font-bold">{county}</span>
                     </div>
                     <div>
-                      <span className="text-stone-500 font-semibold block uppercase">CONFIRMED DATE</span>
+                      <span className="text-stone-500 dark:text-stone-400 font-semibold block uppercase">CONFIRMED DATE</span>
                       <span className="text-stone-200 font-bold">Upcoming Saturday</span>
                     </div>
                     <div>
-                      <span className="text-stone-500 font-semibold block uppercase">SHIFT SESSION</span>
+                      <span className="text-stone-500 dark:text-stone-400 font-semibold block uppercase">SHIFT SESSION</span>
                       <span className="text-stone-200 font-bold">{activeShift}</span>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export default function VolunteerHub() {
                         printW.print();
                       }
                     }}
-                    className="px-6 py-3 bg-brand-orange-500 text-stone-900 font-extrabold rounded-xl text-xs hover:bg-brand-orange-600 transition-all cursor-pointer"
+                    className="px-6 py-3 bg-brand-orange-500 text-stone-900 dark:text-stone-100 font-extrabold rounded-xl text-xs hover:bg-brand-orange-600 transition-all cursor-pointer"
                   >
                     Print Gate Ticket
                   </button>
@@ -278,7 +278,7 @@ export default function VolunteerHub() {
                           key={shift}
                           className={`flex items-center space-x-3 p-3 rounded-xl border text-xs cursor-pointer transition-colors ${
                             activeShift === shift
-                              ? "bg-brand-orange-500 border-brand-orange-550 text-stone-900 font-extrabold"
+                              ? "bg-brand-orange-500 border-brand-orange-550 text-stone-900 dark:text-stone-100 font-extrabold"
                               : "bg-stone-900 text-stone-350 border-stone-800 hover:border-stone-700 hover:bg-stone-850"
                           }`}
                         >
@@ -374,13 +374,13 @@ export default function VolunteerHub() {
                   {/* Enroll submit */}
                   <button
                     type="submit"
-                    className="w-full py-4 mt-2 bg-gradient-to-r from-brand-orange-500 to-amber-500 hover:from-brand-orange-600 hover:to-amber-600 text-stone-950 font-extrabold rounded-xl shadow font-display text-sm flex items-center justify-center space-x-2 cursor-pointer transition-all uppercase tracking-wider"
+                    className="w-full py-4 mt-2 bg-gradient-to-r from-brand-orange-500 to-amber-500 hover:from-brand-orange-600 hover:to-amber-600 text-stone-950 dark:text-stone-50 font-extrabold rounded-xl shadow font-display text-sm flex items-center justify-center space-x-2 cursor-pointer transition-all uppercase tracking-wider"
                   >
                     <FileCheck className="h-4.5 w-4.5" />
                     <span>Securely Enroll shift roster</span>
                   </button>
 
-                  <div className="flex items-center space-x-2 text-[10px] text-stone-500 justify-center">
+                  <div className="flex items-center space-x-2 text-[10px] text-stone-500 dark:text-stone-400 justify-center">
                     <ShieldCheck className="h-4 w-4 text-emerald-500" />
                     <span>Your privacy is 100% guarded under encrypted SSL.</span>
                   </div>
@@ -405,7 +405,7 @@ export default function VolunteerHub() {
                         className="px-3 py-1.5 bg-stone-900 text-[11px] rounded-lg border border-stone-800 flex items-center space-x-1.5 animate-bounce-short"
                       >
                         <span className="text-white font-bold">{vol.name.split(" ")[0]}</span>
-                        <span className="text-stone-500 italic">joined</span>
+                        <span className="text-stone-500 dark:text-stone-400 italic">joined</span>
                         <span className="text-brand-green-100 font-semibold">{matchedRole?.title.split(" ")[0]}...</span>
                       </div>
                     );

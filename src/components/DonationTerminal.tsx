@@ -76,14 +76,14 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
   return (
     <div
       id="donation-terminal-overlay"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-4 backdrop-blur-sm animate-fade-in text-stone-950 text-left"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-4 backdrop-blur-sm animate-fade-in text-stone-950 dark:text-stone-50 text-left"
     >
-      <div className="bg-white rounded-3xl w-full max-w-xl shadow-2xl relative overflow-hidden flex flex-col justify-between border border-stone-100 max-h-[92vh]">
+      <div className="bg-white dark:bg-stone-950 rounded-3xl w-full max-w-xl shadow-2xl relative overflow-hidden flex flex-col justify-between border border-stone-100 dark:border-stone-800 max-h-[92vh]">
         
         {/* Upper Step Progress header */}
         <div className="bg-stone-900 text-white p-5 sm:p-6 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-to-r from-brand-orange-500 to-amber-500 text-stone-900 rounded-lg">
+            <div className="p-2 bg-gradient-to-r from-brand-orange-500 to-amber-500 text-stone-900 dark:text-stone-100 rounded-lg">
               <Heart className="h-5 w-5 fill-stone-900" />
             </div>
             <div>
@@ -107,7 +107,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
         </div>
 
         {/* Step dots line progress indicator */}
-        <div className="h-1 w-full bg-stone-100 flex">
+        <div className="h-1 w-full bg-stone-100 dark:bg-stone-800 flex">
           <div className="h-full bg-brand-orange-500 transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }} />
         </div>
 
@@ -120,20 +120,20 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
               
               <div className="space-y-1">
                 <span className="text-[11px] font-mono text-stone-400 uppercase tracking-wider block font-bold">SELECT GIFT VALUE</span>
-                <h4 className="font-display font-extrabold text-xl text-stone-900 tracking-tight leading-snug">
+                <h4 className="font-display font-extrabold text-xl text-stone-900 dark:text-stone-100 tracking-tight leading-snug">
                   Choose a direct aid amount:
                 </h4>
               </div>
 
               {/* Freq selection block */}
-              <div className="flex bg-stone-100 p-1 rounded-xl w-fit">
+              <div className="flex bg-stone-100 dark:bg-stone-800 p-1 rounded-xl w-fit">
                 <button
                   type="button"
                   onClick={() => setFrequency("one-time")}
                   className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                     frequency === "one-time"
-                      ? "bg-white text-stone-950 shadow-sm"
-                      : "text-stone-500 hover:text-stone-850"
+                      ? "bg-white dark:bg-stone-950 text-stone-950 dark:text-stone-50 shadow-sm"
+                      : "text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:text-stone-200"
                   }`}
                 >
                   One-time donation
@@ -143,8 +143,8 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   onClick={() => setFrequency("monthly")}
                   className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
                     frequency === "monthly"
-                      ? "bg-brand-orange-500 text-stone-950 shadow-sm"
-                      : "text-stone-500 hover:text-stone-850"
+                      ? "bg-brand-orange-500 text-stone-950 dark:text-stone-50 shadow-sm"
+                      : "text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:text-stone-200"
                   }`}
                 >
                   <Heart className="h-3 w-3 fill-stone-950" />
@@ -165,7 +165,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                     className={`p-4 border rounded-2xl text-base font-extrabold transition-all cursor-pointer ${
                       pledgeAmt === amt && !customVal
                         ? "bg-brand-green-800 text-white border-brand-green-850 shadow-md"
-                        : "bg-stone-50 border-stone-150 hover:bg-stone-100 hover:border-stone-250 text-stone-800"
+                        : "bg-stone-50 dark:bg-stone-900 border-stone-150 hover:bg-stone-100 dark:bg-stone-800 hover:border-stone-250 text-stone-800 dark:text-stone-200"
                     }`}
                   >
                     £{amt}
@@ -187,7 +187,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                       setCustomVal(e.target.value);
                       setPledgeAmt(Number(e.target.value) || 0);
                     }}
-                    className="w-full bg-stone-50 border border-stone-200 py-3 pl-8 pr-4 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold"
+                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 py-3 pl-8 pr-4 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold"
                   />
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
               
               <div className="space-y-1">
                 <span className="text-[11px] font-mono text-stone-450 uppercase tracking-wider block font-bold">DONOR PARTICULARS</span>
-                <h4 className="font-display font-extrabold text-xl text-stone-900 tracking-tight leading-snug">
+                <h4 className="font-display font-extrabold text-xl text-stone-900 dark:text-stone-100 tracking-tight leading-snug">
                   Let us know who you are:
                 </h4>
               </div>
@@ -224,7 +224,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                     placeholder="e.g. Jane Smith"
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-200 p-3 rounded-xl focus:outline-none focus:border-brand-green-800 text-sm font-semibold"
+                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 rounded-xl focus:outline-none focus:border-brand-green-800 text-sm font-semibold"
                   />
                   {cardErrors.donorName && (
                     <span className="text-red-500 text-xs flex items-center">
@@ -241,7 +241,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                     placeholder="e.g. janesmith@yahoo.com"
                     value={donorEmail}
                     onChange={(e) => setDonorEmail(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-200 p-3 rounded-xl focus:outline-none focus:border-brand-green-800 text-sm font-semibold"
+                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 rounded-xl focus:outline-none focus:border-brand-green-800 text-sm font-semibold"
                   />
                   {cardErrors.donorEmail && (
                     <span className="text-red-500 text-xs flex items-center">
@@ -260,8 +260,8 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                       className="accent-brand-orange-500 focus:outline-none"
                     />
                     <div>
-                      <span className="text-xs font-bold text-stone-900 block font-display">Dedicate this donation in honor/memory of someone</span>
-                      <span className="text-[10px] text-stone-500 block leading-tight font-light font-sans">
+                      <span className="text-xs font-bold text-stone-900 dark:text-stone-100 block font-display">Dedicate this donation in honor/memory of someone</span>
+                      <span className="text-[10px] text-stone-500 dark:text-stone-400 block leading-tight font-light font-sans">
                         We will draft a custom commemorative graphic you can print or display!
                       </span>
                     </div>
@@ -276,7 +276,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                       placeholder="e.g. Reverend Thomas Green, Grandma Mary"
                       value={tributeName}
                       onChange={(e) => setTributeName(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-200 p-3 rounded-xl focus:outline-none focus:border-brand-orange-550 text-stone-900 font-bold"
+                      className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 rounded-xl focus:outline-none focus:border-brand-orange-550 text-stone-900 dark:text-stone-100 font-bold"
                     />
                   </div>
                 )}
@@ -287,7 +287,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="w-1/3 py-3.5 border border-stone-200 hover:bg-stone-50 text-stone-700 font-bold text-xs rounded-xl shadow-sm cursor-pointer transition-all uppercase tracking-wider text-center"
+                  className="w-1/3 py-3.5 border border-stone-200 dark:border-stone-800 hover:bg-stone-50 dark:bg-stone-900 text-stone-700 dark:text-stone-300 font-bold text-xs rounded-xl shadow-sm cursor-pointer transition-all uppercase tracking-wider text-center"
                 >
                   Back
                 </button>
@@ -311,7 +311,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 <span className="text-[11px] font-mono text-emerald-600 block uppercase tracking-widest font-black">
                   🛡️ SSL SECURE GATEWAY
                 </span>
-                <h4 className="font-display font-extrabold text-xl text-stone-900 tracking-tight leading-snug">
+                <h4 className="font-display font-extrabold text-xl text-stone-900 dark:text-stone-100 tracking-tight leading-snug">
                   Secured Transaction Ledger
                 </h4>
               </div>
@@ -332,7 +332,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 /* SIMULATION LOADER WAVE */
                 <div className="py-12 text-center space-y-4">
                   <div className="h-8 w-8 rounded-full border-t-4 border-brand-orange-500 animate-spin mx-auto" />
-                  <span className="text-xs font-mono text-stone-500 block uppercase tracking-wider">
+                  <span className="text-xs font-mono text-stone-500 dark:text-stone-400 block uppercase tracking-wider">
                     Securing bank connection, executing handshake protocols...
                   </span>
                 </div>
@@ -353,7 +353,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                           const val = e.target.value.replace(/\D/g, "");
                           setCardNumber(val.replace(/(.{4})/g, "$1 ").trim());
                         }}
-                        className="w-full bg-stone-50 border border-stone-200 p-3 pl-11 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 tracking-wider font-mono placeholder:tracking-normal placeholder:font-sans"
+                        className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 pl-11 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 dark:text-stone-100 tracking-wider font-mono placeholder:tracking-normal placeholder:font-sans"
                       />
                       <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
                     </div>
@@ -381,7 +381,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                             setCardExpiry(val);
                           }
                         }}
-                        className="w-full bg-stone-50 border border-stone-200 p-3 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 font-mono text-center"
+                        className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 dark:text-stone-100 font-mono text-center"
                       />
                       {cardErrors.cardExpiry && (
                         <span className="text-red-500 text-[10px] flex items-center leading-none mt-1">
@@ -398,7 +398,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                         placeholder="•••"
                         value={cardCVC}
                         onChange={(e) => setCardCVC(e.target.value.replace(/\D/g, ""))}
-                        className="w-full bg-stone-50 border border-stone-200 p-3 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 text-center font-mono"
+                        className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-3 rounded-xl text-sm focus:outline-none focus:border-brand-green-800 font-bold text-stone-900 dark:text-stone-100 text-center font-mono"
                       />
                       {cardErrors.cardCVC && (
                         <span className="text-red-500 text-[10px] flex items-center leading-none mt-1">
@@ -417,7 +417,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                   type="button"
                   onClick={() => setStep(2)}
                   disabled={paySimulated}
-                  className="w-1/3 py-3.5 border border-stone-200 hover:bg-stone-50 text-stone-700 font-bold text-xs rounded-xl shadow-sm transition-all uppercase tracking-wider text-center cursor-pointer"
+                  className="w-1/3 py-3.5 border border-stone-200 dark:border-stone-800 hover:bg-stone-50 dark:bg-stone-900 text-stone-700 dark:text-stone-300 font-bold text-xs rounded-xl shadow-sm transition-all uppercase tracking-wider text-center cursor-pointer"
                 >
                   Back
                 </button>
@@ -444,25 +444,25 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
 
               <div className="space-y-2">
                 <span className="text-[10px] uppercase font-mono tracking-widest text-brand-orange-500 block font-bold">TRANSACTION CERTIFIED</span>
-                <h4 className="font-display font-black text-2xl text-stone-950">
+                <h4 className="font-display font-black text-2xl text-stone-950 dark:text-stone-50">
                   Glorious support, thank you!
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-650 max-w-sm mx-auto leading-relaxed font-light font-sans">
+                <p className="text-xs sm:text-sm text-stone-650 dark:text-stone-400 max-w-sm mx-auto leading-relaxed font-light font-sans">
                   Your donation of <strong>£{pledgeAmt}</strong> has been debited securely. A copy has been delivered to <strong>{donorEmail}</strong>.
                 </p>
               </div>
 
               {/* Printable receipt rendering frame */}
-              <div className="bg-stone-50 border border-stone-250 p-6 rounded-2xl text-left space-y-4 max-w-md mx-auto">
-                <div className="flex justify-between items-center border-b border-stone-200 pb-3">
+              <div className="bg-stone-50 dark:bg-stone-900 border border-stone-250 p-6 rounded-2xl text-left space-y-4 max-w-md mx-auto">
+                <div className="flex justify-between items-center border-b border-stone-200 dark:border-stone-800 pb-3">
                   <div>
                     <span className="text-[9px] font-mono text-stone-400 uppercase tracking-wider">TAX EXEMPT RECEIPT</span>
-                    <span className="font-display font-black text-stone-900 text-sm block">Mi Food Bank</span>
+                    <span className="font-display font-black text-stone-900 dark:text-stone-100 text-sm block">Mi Food Bank</span>
                   </div>
                   <Award className="h-6 w-6 text-brand-orange-500 shrink-0" />
                 </div>
 
-                <div className="space-y-2 text-[11px] font-sans text-stone-700 leading-snug">
+                <div className="space-y-2 text-[11px] font-sans text-stone-700 dark:text-stone-300 leading-snug">
                   <div>
                     <span className="font-mono text-stone-400 uppercase font-semibold">DONOR IDENTIFICATION:</span>{" "}
                     <strong>{donorName}</strong>
@@ -488,7 +488,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                 {isTribute && (
                   <div className="border-t border-dashed border-stone-250 pt-3 text-center">
                     <span className="text-[10px] font-mono text-brand-orange-600 block uppercase tracking-widest font-bold">💐 TRIBUTE HONOREE CARD</span>
-                    <p className="text-[11px] italic font-light font-serif pt-1 text-stone-650">
+                    <p className="text-[11px] italic font-light font-serif pt-1 text-stone-650 dark:text-stone-400">
                       &quot;Generous support given in cherished memory and celebration of the vibrant legacy of {tributeName}.&quot;
                     </p>
                   </div>
@@ -522,7 +522,7 @@ export default function DonationTerminal({ isOpen, onClose, initialAmount = 25, 
                       printReceipt.print();
                     }
                   }}
-                  className="flex-1 py-3 bg-brand-orange-500 text-stone-900 font-extrabold text-xs rounded-xl hover:bg-brand-orange-600 shadow cursor-pointer transition-all uppercase tracking-wider flex items-center justify-center space-x-1.5"
+                  className="flex-1 py-3 bg-brand-orange-500 text-stone-900 dark:text-stone-100 font-extrabold text-xs rounded-xl hover:bg-brand-orange-600 shadow cursor-pointer transition-all uppercase tracking-wider flex items-center justify-center space-x-1.5"
                 >
                   <Printer className="h-3.5 w-3.5" />
                   <span>Print Receipt</span>

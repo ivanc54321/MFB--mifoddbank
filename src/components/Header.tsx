@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Heart, Menu, X, Share2, Award, Sparkles } from "lucide-react";
+import { Heart, Menu, X, Share2, Award, Sparkles, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Logo from "./Logo";
 
@@ -7,9 +7,11 @@ interface HeaderProps {
   onNavClick: (sectionId: string) => void;
   activeSection: string;
   onOpenDonate: () => void;
+  isDark: boolean;
+  toggleTheme: () => void;
 }
 
-export default function Header({ onNavClick, activeSection, onOpenDonate }: HeaderProps) {
+export default function Header({ onNavClick, activeSection, onOpenDonate, isDark, toggleTheme }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -101,6 +103,13 @@ export default function Header({ onNavClick, activeSection, onOpenDonate }: Head
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center space-x-3">
             <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-stone-400 hover:text-brand-orange-500 hover:bg-stone-800 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
+            <button
               id="header-action-volunteer"
               onClick={() => handleItemClick("volunteer-hub")}
               className="px-4 py-2 border border-brand-green-200 rounded-lg text-sm font-semibold text-brand-green-100 hover:bg-brand-green-800 hover:border-brand-green-600 transition-all cursor-pointer"
@@ -118,7 +127,13 @@ export default function Header({ onNavClick, activeSection, onOpenDonate }: Head
           </div>
 
           {/* Mobile Hamburguer */}
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-stone-400 hover:text-brand-orange-500 hover:bg-stone-800 transition-colors"
+            >
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

@@ -86,7 +86,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
   return (
     <section
       id="impact-calculator"
-      className="py-24 bg-stone-550 relative overflow-hidden"
+      className="py-24 bg-stone-50 dark:bg-stone-900 relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-stone-900/5 glow-grid pointer-events-none" />
 
@@ -98,10 +98,10 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
             <Sparkles className="h-3 w-3" />
             <span>Interactive Impact Calculator</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-stone-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-black text-stone-900 dark:text-stone-100 tracking-tight">
             See the Power of Your Pound
           </h2>
-          <p className="text-stone-600 font-light text-base sm:text-lg">
+          <p className="text-stone-600 dark:text-stone-400 font-light text-base sm:text-lg">
             Unlike standard grocery prices, our scale and rural partnerships mean **£1 provides nearly 10 nutritional meals**. Slide the bar below to calculate your real local footprint!
           </p>
         </div>
@@ -110,22 +110,22 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
           
           {/* Slider Control Block */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-stone-100 shadow-xl space-y-8">
+          <div className="lg:col-span-7 bg-white dark:bg-stone-950 p-6 sm:p-8 rounded-3xl border border-stone-100 dark:border-stone-800 shadow-xl space-y-8">
             
             {/* Frequency Toggle */}
-            <div className="flex items-center justify-between border-b border-stone-100 pb-5">
+            <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-5">
               <div>
-                <span className="font-display font-bold text-lg text-stone-900 block">Choose Frequency</span>
+                <span className="font-display font-bold text-lg text-stone-900 dark:text-stone-100 block">Choose Frequency</span>
                 <span className="text-xs text-stone-450 font-normal">Monthly gifts provide stable sustainable year-round planning.</span>
               </div>
-              <div className="flex bg-stone-100 p-1 rounded-xl">
+              <div className="flex bg-stone-100 dark:bg-stone-800 p-1 rounded-xl">
                 <button
                   id="freq-btn-once"
                   onClick={() => setFrequency("one-time")}
                   className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                     frequency === "one-time"
-                      ? "bg-white text-stone-900 shadow-sm"
-                      : "text-stone-500 hover:text-stone-850"
+                      ? "bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 shadow-sm"
+                      : "text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:text-stone-200"
                   }`}
                 >
                   One-time
@@ -135,8 +135,8 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
                   onClick={() => setFrequency("monthly")}
                   className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
                     frequency === "monthly"
-                      ? "bg-brand-orange-500 text-stone-950 shadow-sm"
-                      : "text-stone-500 hover:text-stone-850"
+                      ? "bg-brand-orange-500 text-stone-950 dark:text-stone-50 shadow-sm"
+                      : "text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:text-stone-200"
                   }`}
                 >
                   <Heart className="h-3.5 w-3.5 fill-stone-950" />
@@ -148,7 +148,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
             {/* Slider Widget */}
             <div className="space-y-4">
               <div className="flex justify-between items-end">
-                <span className="text-sm font-mono text-stone-500 uppercase tracking-widest font-bold">Contribution Amount</span>
+                <span className="text-sm font-mono text-stone-500 dark:text-stone-400 uppercase tracking-widest font-bold">Contribution Amount</span>
                 <span className="text-4xl font-display font-black text-brand-green-800 flex items-center tracking-tight">
                   <PoundSterling className="h-7 w-7 text-brand-orange-500 stroke-[3px]" />
                   <span>{sliderVal}</span>
@@ -193,7 +193,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
                     className={`px-4 py-2 border rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       sliderVal === amt
                         ? "bg-brand-green-800 text-white border-brand-green-850 shadow-md"
-                        : "bg-stone-50 text-stone-600 border-stone-200 hover:border-brand-green-200 hover:bg-stone-100"
+                        : "bg-stone-50 dark:bg-stone-900 text-stone-600 dark:text-stone-400 border-stone-200 dark:border-stone-800 hover:border-brand-green-200 hover:bg-stone-100 dark:bg-stone-800"
                     }`}
                   >
                     £{amt}
@@ -203,7 +203,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
             </div>
 
             {/* Simulated instant transaction note */}
-            <div className="p-4 bg-brand-green-50 rounded-2xl border border-brand-green-100 flex items-start space-x-3 text-stone-850 text-sm font-light">
+            <div className="p-4 bg-brand-green-50 rounded-2xl border border-brand-green-100 flex items-start space-x-3 text-stone-850 dark:text-stone-200 text-sm font-light">
               <Landmark className="h-5 w-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <span>
                 <strong>Your protection matters</strong>: Outfitted with 256-bit bank SSL safeguards. 94% of coordinates go directly to sorting and transportation. Tax-deductible receipt issued immediately.
@@ -214,7 +214,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
 
           {/* Buying Power Outcome Panel */}
           <div className="lg:col-span-5 bg-gradient-to-br from-brand-green-800 to-brand-green-900 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between h-full relative">
-            <div className="absolute top-4 right-4 bg-white/10 px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase">
+            <div className="absolute top-4 right-4 bg-white dark:bg-stone-950/10 px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase">
               {currentImpact.level}
             </div>
 
@@ -229,7 +229,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
               </div>
 
               {/* Dynamic Icons array */}
-              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl text-center">
+              <div className="bg-white dark:bg-stone-950/5 border border-white/10 p-5 rounded-2xl text-center">
                 <div className="text-3xl tracking-wide select-none animate-shiver">
                   {currentImpact.iconSummary}
                 </div>
@@ -299,7 +299,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
               <button
                 id="impact-cta-donate-now"
                 onClick={() => onDonateClick(sliderVal, frequency)}
-                className="w-full py-4 bg-brand-orange-500 text-stone-900 font-extrabold rounded-xl shadow hover:bg-brand-orange-600 transition-all font-display text-base cursor-pointer tracking-wider flex items-center justify-center space-x-2"
+                className="w-full py-4 bg-brand-orange-500 text-stone-900 dark:text-stone-100 font-extrabold rounded-xl shadow hover:bg-brand-orange-600 transition-all font-display text-base cursor-pointer tracking-wider flex items-center justify-center space-x-2"
               >
                 <span>Sponsor program at £{sliderVal}/mo</span>
                 <Heart className="h-4.5 w-4.5 fill-stone-900" />

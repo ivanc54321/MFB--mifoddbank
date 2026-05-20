@@ -85,7 +85,7 @@ export default function BlogFeed() {
   const categories = ["All", "News", "Impact Story", "Recipe"];
 
   return (
-    <section id="blog-feed" className="py-24 bg-white text-stone-900 border-t border-stone-100">
+    <section id="blog-feed" className="py-24 bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 border-t border-stone-100 dark:border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Title narrative */}
@@ -95,10 +95,10 @@ export default function BlogFeed() {
               <BookOpen className="h-3 w-3" />
               <span>The Harvest Press & News Blog</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-black text-stone-950 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-display font-black text-stone-950 dark:text-stone-50 tracking-tight">
               Community News & Updates
             </h2>
-            <p className="text-stone-600 font-light text-sm sm:text-base leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-400 font-light text-sm sm:text-base leading-relaxed">
               Read real-life testimonials, community shop stories, volunteers, and low-cost recipes straight from the heart of our Margate network.
             </p>
           </div>
@@ -117,15 +117,15 @@ export default function BlogFeed() {
         {/* Dynamic Nav filters and Search */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-stone-150 pb-6 mb-10 gap-4">
           
-          <div className="flex bg-stone-100 p-1 rounded-xl w-fit">
+          <div className="flex bg-stone-100 dark:bg-stone-800 p-1 rounded-xl w-fit">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeCategory === cat
-                    ? "bg-white text-stone-950 shadow-sm"
-                    : "text-stone-500 hover:text-stone-850"
+                    ? "bg-white dark:bg-stone-950 text-stone-950 dark:text-stone-50 shadow-sm"
+                    : "text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:text-stone-200"
                 }`}
               >
                 {cat === "All" ? "All Stories" : `${cat}s`}
@@ -140,13 +140,13 @@ export default function BlogFeed() {
               placeholder="Search news & stews..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-stone-50 border border-stone-200 focus:outline-none focus:border-brand-green-800 rounded-xl text-xs text-stone-800 font-medium"
+              className="w-full pl-10 pr-4 py-2.5 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 focus:outline-none focus:border-brand-green-800 rounded-xl text-xs text-stone-800 dark:text-stone-200 font-medium"
             />
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-stone-400" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-stone-400 hover:text-stone-800 focus:outline-none"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-stone-400 hover:text-stone-800 dark:text-stone-200 focus:outline-none"
               >
                 clear
               </button>
@@ -163,12 +163,12 @@ export default function BlogFeed() {
               <article
                 key={blog.id}
                 id={`blog-card-${blog.id}`}
-                className="bg-white rounded-3xl border border-stone-150/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden group"
+                className="bg-white dark:bg-stone-950 rounded-3xl border border-stone-150/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden group"
               >
                 <div>
                   
                   {/* Photo thumbnail placeholder */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-stone-100">
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-stone-100 dark:bg-stone-800">
                     <img
                       src={blog.image}
                       alt={blog.title}
@@ -190,7 +190,7 @@ export default function BlogFeed() {
                       <span>{blog.readTime}</span>
                     </div>
 
-                    <h4 className="font-display font-black text-lg tracking-tight text-stone-900 group-hover:text-brand-orange-500 transition-colors leading-snug">
+                    <h4 className="font-display font-black text-lg tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-brand-orange-500 transition-colors leading-snug">
                       {blog.title}
                     </h4>
 
@@ -202,7 +202,7 @@ export default function BlogFeed() {
                 </div>
 
                 {/* Footer and Interactive logs */}
-                <div className="px-6 pb-6 pt-4 border-t border-stone-50 flex items-center justify-between text-xs text-stone-500 font-mono">
+                <div className="px-6 pb-6 pt-4 border-t border-stone-50 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 font-mono">
                   <span className="flex items-center text-[10px] truncate max-w-40 font-semibold italic">
                     <User className="h-3 w-3 mr-1 text-brand-green-800 shrink-0" />
                     By {blog.author.split(",")[0]}
@@ -249,7 +249,7 @@ export default function BlogFeed() {
       {/* COMPOSER MODAL FOR COMMUNITY WRITERS */}
       {showDraftModal && (
         <div id="news-composer-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/70 p-4 backdrop-blur-sm animate-fade-in text-left">
-          <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl p-6 sm:p-8 space-y-6 animate-scale-up border border-stone-100 relative">
+          <div className="bg-white dark:bg-stone-950 rounded-3xl w-full max-w-lg shadow-2xl p-6 sm:p-8 space-y-6 animate-scale-up border border-stone-100 dark:border-stone-800 relative">
             
             {/* Success state overlay */}
             {draftSuccess ? (
@@ -257,25 +257,25 @@ export default function BlogFeed() {
                 <div className="bg-brand-orange-50 p-4 rounded-full w-fit mx-auto text-brand-orange-600 animate-pulse">
                   <CheckCircle className="h-10 w-10" />
                 </div>
-                <h4 className="font-display font-bold text-xl text-stone-900">Story Published to Local Feed!</h4>
-                <p className="text-xs text-stone-500">Dispatching to community streams...</p>
+                <h4 className="font-display font-bold text-xl text-stone-900 dark:text-stone-100">Story Published to Local Feed!</h4>
+                <p className="text-xs text-stone-500 dark:text-stone-400">Dispatching to community streams...</p>
               </div>
             ) : (
               
               /* Draft Input controls */
               <form onSubmit={handleCreateDraft} className="space-y-4">
                 
-                <div className="flex items-center justify-between border-b border-stone-100 pb-3">
+                <div className="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
                   <div className="flex items-center space-x-2">
                     <Sparkles className="h-5 w-5 text-brand-orange-500" />
-                    <span className="font-display font-extrabold text-stone-900 text-lg">
+                    <span className="font-display font-extrabold text-stone-900 dark:text-stone-100 text-lg">
                       Draft Local News Story
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setShowDraftModal(false)}
-                    className="text-stone-400 hover:text-stone-700 text-sm font-bold focus:outline-none cursor-pointer"
+                    className="text-stone-400 hover:text-stone-700 dark:text-stone-300 text-sm font-bold focus:outline-none cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -291,7 +291,7 @@ export default function BlogFeed() {
                       placeholder="e.g. Garden Harvest sets new record in Oakland County"
                       value={draftTitle}
                       onChange={(e) => setDraftTitle(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-200 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 placeholder-stone-400"
+                      className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 dark:text-stone-100 placeholder-stone-400"
                     />
                   </div>
 
@@ -304,7 +304,7 @@ export default function BlogFeed() {
                         placeholder="e.g. Martha G., Volunteer Coord"
                         value={draftAuthor}
                         onChange={(e) => setDraftAuthor(e.target.value)}
-                        className="w-full bg-stone-50 border border-stone-200 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 text-xs"
+                        className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 dark:text-stone-100 text-xs"
                       />
                     </div>
 
@@ -313,7 +313,7 @@ export default function BlogFeed() {
                       <select
                         value={draftCategory}
                         onChange={(e) => setDraftCategory(e.target.value as any)}
-                        className="w-full bg-stone-50 border border-stone-200 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 text-xs"
+                        className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 dark:text-stone-100 text-xs"
                       >
                         <option value="News">News / Press</option>
                         <option value="Impact Story">Impact Story / Reflection</option>
@@ -332,7 +332,7 @@ export default function BlogFeed() {
                       placeholder="A short one-sentence hook summarizing the update."
                       value={draftExcerpt}
                       onChange={(e) => setDraftExcerpt(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-200 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 text-xs"
+                      className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 dark:text-stone-100 text-xs"
                     />
                   </div>
 
@@ -344,7 +344,7 @@ export default function BlogFeed() {
                       placeholder="Share details here. What happened, who benefited, and how can neighbors support this initiative?"
                       value={draftContent}
                       onChange={(e) => setDraftContent(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-200 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 text-xs"
+                      className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-2.5 rounded-lg focus:outline-none focus:border-brand-green-800 text-stone-900 dark:text-stone-100 text-xs"
                     />
                   </div>
 
@@ -352,7 +352,7 @@ export default function BlogFeed() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-brand-orange-500 hover:bg-brand-orange-600 text-stone-950 font-bold text-xs rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider text-center"
+                  className="w-full py-3 bg-brand-orange-500 hover:bg-brand-orange-600 text-stone-950 dark:text-stone-50 font-bold text-xs rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider text-center"
                 >
                   Publish to Community Feed
                 </button>

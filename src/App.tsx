@@ -17,6 +17,17 @@ export default function App() {
   const [donateAmount, setDonateAmount] = useState(25);
   const [donateFreq, setDonateFreq] = useState<"one-time" | "monthly">("monthly");
 
+  // Theme State
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
   // Track scroll position to color active header nav tab
   useEffect(() => {
     const handleScroll = () => {
@@ -88,13 +99,15 @@ export default function App() {
   };
 
   return (
-    <div id="full-app-scroller" className="bg-stone-50 text-stone-900 min-h-screen relative font-sans overflow-x-hidden antialiased selection:bg-brand-orange-500 selection:text-stone-950">
+    <div id="full-app-scroller" className="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 min-h-screen relative font-sans overflow-x-hidden antialiased selection:bg-brand-orange-500 selection:text-stone-950 transition-colors duration-300">
       
       {/* Sticky polished Backdrop-blur header bar */}
       <Header
         onNavClick={handleNavClick}
         activeSection={activeSection}
         onOpenDonate={handleOpenDonate}
+        isDark={isDark}
+        toggleTheme={() => setIsDark(!isDark)}
       />
 
       {/* Hero parallax layers scrolling panel */}
