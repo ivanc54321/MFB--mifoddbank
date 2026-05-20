@@ -49,7 +49,7 @@ export default function Header({ onNavClick, activeSection, onOpenDonate, isDark
     <header
       id="main-app-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || activeSection !== "hero"
+        isScrolled
           ? "bg-stone-900/95 text-stone-100 shadow-lg backdrop-blur-md py-3"
           : "bg-gradient-to-b from-stone-950/80 to-stone-950/0 text-stone-100 py-5"
       }`}

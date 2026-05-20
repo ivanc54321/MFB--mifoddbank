@@ -28,10 +28,61 @@ export default function App() {
     }
   }, [isDark]);
 
-  // View navigation (acts like pages)
+  // Track scroll position to color active header nav tab
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        { id: "hero", top: 0 },
+        { id: "impact-calculator", element: document.getElementById("impact-calculator") },
+        { id: "food-map", element: document.getElementById("food-map") },
+        { id: "volunteer-hub", element: document.getElementById("volunteer-hub") },
+        { id: "blog-feed", element: document.getElementById("blog-feed") },
+        { id: "recipe-finder", element: document.getElementById("recipe-finder") },
+      ];
+
+      const scrollPosition = window.scrollY + 160;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const item = sections[i];
+        if (item.element) {
+          const rect = item.element.getBoundingClientRect();
+          const topPosition = window.scrollY + rect.top;
+          if (scrollPosition >= topPosition) {
+            setActiveSection(item.id);
+            break;
+          }
+        } else if (item.id === "hero" && scrollPosition < 400) {
+          setActiveSection("hero");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Smooth navigation scroll callback
   const handleNavClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (sectionId === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("hero");
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Offset spacing for sticking absolute header
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      setActiveSection(sectionId);
+    }
   };
 
   // Open direct donation popups
@@ -59,46 +110,33 @@ export default function App() {
         toggleTheme={() => setIsDark(!isDark)}
       />
 
-      {/* Main interactive sub-sections conditionally rendered as pages */}
-      <div className="pt-20 lg:pt-0">
-        {activeSection === "hero" && (
-          <div id="scroll-section-hero">
-            <ParallaxHero
-              onDonateClick={handleOpenDonate}
-              onExploreClick={handleNavClick}
-            />
-          </div>
-        )}
+      {/* Hero parallax layers scrolling panel */}
+      <div id="scroll-section-hero">
+        <ParallaxHero
+          onDonateClick={handleOpenDonate}
+          onExploreClick={handleNavClick}
+        />
+      </div>
 
-        {activeSection === "impact-calculator" && (
-          <div id="scroll-section-impact">
-            <ImpactCalculator onDonateClick={handleCalculatorDonateTrigger} />
-          </div>
-        )}
+      {/* Main interactive sub-sections */}
+      <div id="scroll-section-impact">
+        <ImpactCalculator onDonateClick={handleCalculatorDonateTrigger} />
+      </div>
 
-        {activeSection === "food-map" && (
-          <div id="scroll-section-assistance">
-            <MichiganMap />
-          </div>
-        )}
+      <div id="scroll-section-assistance">
+        <MichiganMap />
+      </div>
 
-        {activeSection === "volunteer-hub" && (
-          <div id="scroll-section-volunteering">
-            <VolunteerHub />
-          </div>
-        )}
+      <div id="scroll-section-volunteering">
+        <VolunteerHub />
+      </div>
 
-        {activeSection === "blog-feed" && (
-          <div id="scroll-section-blog">
-            <BlogFeed />
-          </div>
-        )}
+      <div id="scroll-section-blog">
+        <BlogFeed />
+      </div>
 
-        {activeSection === "recipe-finder" && (
-          <div id="scroll-section-culinary">
-            <RecipeFinder />
-          </div>
-        )}
+      <div id="scroll-section-culinary">
+        <RecipeFinder />
       </div>
 
       {/* Unified Secure payment slide drawer/modal */}
