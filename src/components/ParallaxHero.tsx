@@ -73,15 +73,20 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
+              initial={{ opacity: 0, y: 40, scale: 0.9, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.9, delay: 0.2, type: "spring", bounce: 0.4 }}
               className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-none text-white whitespace-nowrap"
             >
               No Neighbour <br className="lg:hidden" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange-500 via-amber-400 to-yellow-500">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-orange-500 via-amber-400 to-yellow-500"
+              >
                 Left Hungry.
-              </span>
+              </motion.span>
             </motion.h1>
 
             <motion.p
