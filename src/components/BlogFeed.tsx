@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Search, Heart, Bookmark, MessageSquare, Plus, CheckCircle, Sparkles, User, Calendar, BookOpen } from "lucide-react";
+import { motion } from "motion/react";
 import { BLOG_POSTS } from "../data";
 import { BlogPost } from "../types";
 
@@ -86,7 +87,13 @@ export default function BlogFeed() {
 
   return (
     <section id="blog-feed" className="py-24 bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 border-t border-stone-100 dark:border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Title narrative */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -244,7 +251,7 @@ export default function BlogFeed() {
           )}
         </div>
 
-      </div>
+      </motion.div>
 
       {/* COMPOSER MODAL FOR COMMUNITY WRITERS */}
       {showDraftModal && (

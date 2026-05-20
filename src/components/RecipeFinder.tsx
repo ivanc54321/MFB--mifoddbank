@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PANTRY_RECIPES } from "../data";
 import { Recipe } from "../types";
+import { motion } from "motion/react";
 import { Check, Flame, Clock, ChefHat, HelpCircle, AlertCircle, ShoppingBag, Salad } from "lucide-react";
 
 export default function RecipeFinder() {
@@ -43,7 +44,13 @@ export default function RecipeFinder() {
 
   return (
     <section id="recipe-finder" className="py-24 bg-brand-cream-50 text-stone-900 dark:text-stone-100 border-t border-stone-200 dark:border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Title elements */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
@@ -247,7 +254,7 @@ export default function RecipeFinder() {
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -90,7 +90,13 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
     >
       <div className="absolute inset-0 bg-stone-900/5 glow-grid pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+      >
         
         {/* Title details */}
         <div className="max-w-3xl mx-auto space-y-4 mb-16">
@@ -313,7 +319,7 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

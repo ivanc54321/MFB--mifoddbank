@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Check, Calendar, Users, HeartHandshake, Sparkles, AlertCircle, ShieldCheck, FileCheck, PartyPopper } from "lucide-react";
+import { motion } from "motion/react";
 import { VOLUNTEER_ROLES } from "../data";
 import { VolunteerRole, VolunteerSignup } from "../types";
 
@@ -78,7 +79,13 @@ export default function VolunteerHub() {
       <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-orange-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-green-800/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+      >
         
         {/* Header content section */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-20">
@@ -418,7 +425,7 @@ export default function VolunteerHub() {
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

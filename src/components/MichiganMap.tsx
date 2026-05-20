@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Search, MapPin, ExternalLink, Phone, ShieldCheck, Activity, Users, Truck, Info } from "lucide-react";
+import { motion } from "motion/react";
 import { MEMBER_FOOD_BANKS } from "../data";
 import { MemberFoodBank } from "../types";
 
@@ -47,7 +48,13 @@ export default function MichiganMap() {
 
   return (
     <section id="food-map" className="py-24 bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-100 border-t border-stone-100 dark:border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Header Block */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
@@ -280,7 +287,7 @@ export default function MichiganMap() {
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
