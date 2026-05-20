@@ -203,8 +203,8 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
             </div>
 
             {/* Simulated instant transaction note */}
-            <div className="p-4 bg-brand-green-50 rounded-2xl border border-brand-green-100 flex items-start space-x-3 text-stone-850 dark:text-stone-200 text-sm font-light">
-              <Landmark className="h-5 w-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+            <div className="p-4 bg-brand-orange-500 rounded-2xl border border-brand-orange-600 flex items-start space-x-3 text-stone-900 text-sm font-medium shadow-md">
+              <Landmark className="h-6 w-6 text-stone-900 flex-shrink-0 mt-0.5" />
               <span>
                 <strong>Your protection matters</strong>: Outfitted with 256-bit bank SSL safeguards. 94% of coordinates go directly to sorting and transportation. Tax-deductible receipt issued immediately.
               </span>
@@ -299,9 +299,9 @@ export default function ImpactCalculator({ onDonateClick }: ImpactCalculatorProp
               <button
                 id="impact-cta-donate-now"
                 onClick={() => onDonateClick(sliderVal, frequency)}
-                className="w-full py-4 bg-brand-orange-500 text-stone-900 dark:text-stone-100 font-extrabold rounded-xl shadow hover:bg-brand-orange-600 transition-all font-display text-base cursor-pointer tracking-wider flex items-center justify-center space-x-2"
+                className="w-full py-4 bg-brand-orange-500 text-stone-900 dark:text-stone-900 font-extrabold rounded-xl shadow hover:bg-brand-orange-600 transition-all font-display text-base cursor-pointer tracking-wider flex items-center justify-center space-x-2"
               >
-                <span>Sponsor program at £{sliderVal}/mo</span>
+                <span>Sponsor program at £{sliderVal}/{frequency === "monthly" ? "mo" : "once"}</span>
                 <Heart className="h-4.5 w-4.5 fill-stone-900" />
               </button>
               <span className="text-[10px] font-mono text-center block text-brand-green-150 mt-2">
