@@ -58,7 +58,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Headline Copy */}
-          <div className="lg:col-span-7 space-y-8 text-left">
+          <div className="lg:col-span-7 space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start">
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0, y: 40, scale: 0.9, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
               transition={{ duration: 0.9, delay: 0.2, type: "spring", bounce: 0.4 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-none text-white whitespace-nowrap"
+              className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold tracking-tight leading-none text-white lg:whitespace-nowrap"
             >
               No Neighbour <br className="lg:hidden" />
               <motion.span 
@@ -93,7 +93,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg text-stone-300 max-w-xl leading-relaxed font-light"
+              className="text-lg text-stone-300 max-w-xl leading-relaxed font-light text-center lg:text-left mx-auto lg:mx-0"
             >
               Providing low-priced food, household goods, and support to the local community in Thanet/Margate. Open to everyone (no membership or benefits required).
             </motion.p>
@@ -103,7 +103,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4 w-full justify-center lg:justify-start"
             >
               <button
                 id="hero-cta-donate"
@@ -137,7 +137,7 @@ export default function ParallaxHero({ onDonateClick, onExploreClick }: Parallax
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
               transition={{ delay: 0.8 }}
-              className="flex items-center space-x-6 text-sm text-stone-400 font-mono italic"
+              className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-stone-400 font-mono italic"
             >
               <div className="flex items-center space-x-1">
                 <CheckCircle className="h-4 w-4 text-brand-green-200" />

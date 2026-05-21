@@ -43,7 +43,7 @@ export default function RecipeFinder() {
   }).sort((a, b) => b.matchPercent - a.matchPercent);
 
   return (
-    <section id="recipe-finder" className="py-24 bg-brand-cream-50 text-stone-900 dark:text-stone-100 border-t border-stone-200 dark:border-stone-800">
+    <section id="recipe-finder" className="py-24 bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-100 border-t border-stone-200 dark:border-stone-800">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function RecipeFinder() {
               })}
             </div>
 
-            <div className="p-4 bg-brand-cream-100 rounded-2xl border border-brand-cream-200 text-xs text-stone-550 flex items-start space-x-2.5">
+            <div className="p-4 bg-stone-100 dark:bg-stone-800 rounded-2xl border border-stone-200 dark:border-stone-700 text-xs text-stone-500 dark:text-stone-400 flex items-start space-x-2.5">
               <AlertCircle className="h-4.5 w-4.5 text-brand-orange-500 shrink-0 mt-0.5" />
               <p className="leading-relaxed">
                 Choose multiple staples to find perfect multi-ingredient matches. Our recipes are designed to cost under **$1.50 per serving**!
@@ -169,7 +169,7 @@ export default function RecipeFinder() {
                       </div>
 
                       {/* Minutes indicators */}
-                      <div className="flex items-center space-x-4 text-xs font-mono text-stone-550 italic">
+                      <div className="flex items-center space-x-4 text-xs font-mono text-stone-500 dark:text-stone-400 italic">
                         <span className="flex items-center">
                           <Clock className="h-4 w-4 mr-1 text-stone-400" />
                           Prep: {recipe.prepTime}

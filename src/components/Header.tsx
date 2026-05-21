@@ -61,13 +61,16 @@ export default function Header({ onNavClick, activeSection, onOpenDonate, isDark
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
+          
+          {/* Mobile spacing to balance flex-between */}
+          <div className="w-10 lg:hidden" />
           
           {/* Logo Brand Brand */}
           <button
             id="brand-logo-btn"
             onClick={() => handleItemClick("hero")}
-            className="flex items-center group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.02]"
+            className="flex items-center group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] absolute left-1/2 -translate-x-1/2 lg:static lg:transform-none"
           >
             <Logo lightText={true} />
           </button>
